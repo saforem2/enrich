@@ -31,15 +31,15 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
         self._last_time: Optional[str] = None
 
     def __call__(  # pylint: disable=too-many-arguments
-        self,
-        console: "Console",
-        renderables: Iterable["ConsoleRenderable"],
-        log_time: Optional[datetime] = None,
-        time_format: str = '[%x %X]',
-        level: TextType = "",
-        path: Optional[str] = None,
-        line_no: Optional[int] = None,
-        link_path: Optional[str] = None,
+            self,
+            console: "Console",
+            renderables: Iterable["ConsoleRenderable"],
+            log_time: Optional[datetime] = None,
+            time_format: str = '[%x %X]',
+            level: TextType = "",
+            path: Optional[str] = None,
+            line_no: Optional[int] = None,
+            link_path: Optional[str] = None,
     ) -> Text:
         result = Text()
         if self.show_time:
@@ -78,16 +78,13 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
             path_text.append("]", style=STYLES['log.path'])
             result += path_text
         result += Text(' - ')
-
         for elem in renderables:
             result += elem
-
         return result
 
 
 class RichHandler(OriginalRichHandler):
     """Enriched handler that does not wrap."""
-
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
         # RichHandler constructor does not allow custom renderer
