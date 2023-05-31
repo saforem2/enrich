@@ -3,7 +3,9 @@ from datetime import datetime
 from typing import TYPE_CHECKING, Any, Iterable, Optional
 
 from rich.logging import RichHandler as OriginalRichHandler
-from rich.text import Text, TextType
+from rich.text import Text, TextType, Span
+
+from enrich import STYLES
 
 if TYPE_CHECKING:
     from rich.console import Console, ConsoleRenderable
@@ -12,18 +14,20 @@ if TYPE_CHECKING:
 # Based on https://github.com/willmcgugan/rich/blob/master/rich/_log_render.py
 class FluidLogRender:  # pylint: disable=too-few-public-methods
     """Renders log by not using columns and avoiding any wrapping."""
-
     def __init__(
-        self,
-        show_time: bool = False,
-        show_level: bool = False,
-        show_path: bool = True,
-        time_format: str = "[%x %X]",
+            self,
+            show_time: bool = True,
+            show_level: bool = True,
+            show_path: bool = True,
+            time_format: str = "[%x %X]",
+            # level_width: Optional[int] = 0,
+
     ) -> None:
         self.show_time = show_time
         self.show_level = show_level
         self.show_path = show_path
         self.time_format = time_format
+        # self.level_width = level_width
         self._last_time: Optional[str] = None
 
     def __call__(  # pylint: disable=too-many-arguments
@@ -31,7 +35,7 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
         console: "Console",
         renderables: Iterable["ConsoleRenderable"],
         log_time: Optional[datetime] = None,
-        time_format: Optional[str] = None,
+        time_format: str = '[%x %X]',
         level: TextType = "",
         path: Optional[str] = None,
         line_no: Optional[int] = None,
@@ -41,31 +45,38 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
         if self.show_time:
             if log_time is None:
                 log_time = datetime.now()
-            log_time_display = log_time.strftime(time_format or self.time_format) + " "
-            if log_time_display == self._last_time:
-                result += Text(" " * len(log_time_display))
-            else:
-                result += Text(log_time_display)
-                self._last_time = log_time_display
+            log_time_display = log_time.strftime(time_format or self.time_format)
+            result += Text(log_time_display, style=STYLES['logging.time'])
+            self._last_time = log_time_display
         if self.show_level:
-            if not isinstance(level, Text):
-                level = Text(level)
-            # CRITICAL is the longest identifier from default set.
-            if len(level) < 9:
-                level += " " * (9 - len(level))
-            result += level
-
-        for elem in renderables:
-            result += elem
-
+            if isinstance(level, Text):
+                lstr = level.plain.rstrip(' ')
+                style = level.spans[0].style
+                level.spans = [Span(0, len(lstr), style)]
+                ltext = Text(f'[{lstr}]', style=style)
+            elif isinstance(level, str):
+                lstr = level.rstrip(' ')
+                ltext = Text(f"[{lstr}]", style=f"logging.level.{str(lstr)}")
+            else:
+                raise TypeError('Unexpected type for level')
+            result += ltext
         if self.show_path and path:
-            path_text = Text(" ", style="repr.filename")
+            path_text = Text("[", style=STYLES['log.path'])
             path_text.append(
                 path, style=f"link file://{link_path}" if link_path else ""
             )
             if line_no:
-                path_text.append(f":{line_no}")
+                path_text.append(":")
+                path_text.append(
+                    f"{line_no}",
+                    style=f"link file://{link_path}#{line_no}" if link_path else "",
+                )
+            path_text.append("]", style=STYLES['log.path'])
             result += path_text
+        result += Text(' - ')
+
+        for elem in renderables:
+            result += elem
 
         return result
 

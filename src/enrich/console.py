@@ -3,9 +3,15 @@ import os
 import sys
 from typing import Any, TextIO
 
-import rich.console as rich_console
 from rich.ansi import AnsiDecoder
+import rich.console as rich_console
 from rich.file_proxy import FileProxy
+from rich.theme import Theme
+from enrich import STYLES
+
+
+def get_theme():
+    return Theme(STYLES)
 
 
 class Console(rich_console.Console):
