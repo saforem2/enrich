@@ -63,7 +63,11 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
         if self.show_path and path:
             path_text = Text("[", style=STYLES['log.path'])
             path_text.append(
-                path, style=f"link file://{link_path}" if link_path else ""
+                path, style=(
+                    f"link file://{link_path}" + " underline"
+                    # + STYLES["repr.url"]
+                )
+                if link_path else ""
             )
             if line_no:
                 path_text.append(":")
