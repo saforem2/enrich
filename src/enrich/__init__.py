@@ -7,15 +7,14 @@ from rich.style import Style
 
 
 STYLES: Dict[str, Style] = {
-    # 'logging.filepath': Style(color='#F06292'),
+    'url': Style(underline=True, color="blue"),
     'num': Style(color="#69DB7C"),
     'repr.number': Style(color="#69DB7C"),
-    # 'logging.level.info': Style(color="#69DB7C"),
-    # 'logging.level.error': Style(color='#FF5252'),
     'log.level.warn': Style(color='yellow'),
     'log.level.warning': Style(color='yellow'),
     'logging.level.warn': Style(color='yellow'),
     'logging.level.warning': Style(color='yellow'),
+    "log.path": Style(color="#909090", dim=True, bold=False),
     'log.time': Style(color='#696969'),
     'logging.time': Style(color='#696969'),
     "hidden": Style(color="#383b3d", dim=True),
@@ -80,7 +79,6 @@ STYLES: Dict[str, Style] = {
     "log.level": Style.null(),
     # "log.time": Style(color="cyan", dim=True),
     "log.message": Style.null(),
-    "log.path": Style(dim=True, bold=False),  # , underline=True),
     "repr.ellipsis": Style(color="yellow"),
     "repr.indent": Style(color="green", dim=True),
     "repr.error": Style(color="red", bold=True),
