@@ -1,17 +1,21 @@
-"""Implements enriched RichHandler"""
+"""
+Implements enriched RichHandler
+
+Based on:
+
+https://github.com/willmcgugan/rich/blob/master/rich/_log_render.py
+"""
 from datetime import datetime
-from typing import TYPE_CHECKING, Any, Iterable, Optional
+from typing import Any, Iterable, Optional
 
 from rich.logging import RichHandler as OriginalRichHandler
 from rich.text import Text, TextType, Span
 
-from enrich import STYLES
+from enrich.style import STYLES
+from enrich.console import Console
+from rich.console import ConsoleRenderable
 
-if TYPE_CHECKING:
-    from rich.console import Console, ConsoleRenderable
 
-
-# Based on https://github.com/willmcgugan/rich/blob/master/rich/_log_render.py
 class FluidLogRender:  # pylint: disable=too-few-public-methods
     """Renders log by not using columns and avoiding any wrapping."""
     def __init__(
@@ -20,20 +24,18 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
             show_level: bool = True,
             show_path: bool = True,
             time_format: str = "[%x %X]",
-            # level_width: Optional[int] = 0,
 
     ) -> None:
         self.show_time = show_time
         self.show_level = show_level
         self.show_path = show_path
         self.time_format = time_format
-        # self.level_width = level_width
         self._last_time: Optional[str] = None
 
     def __call__(  # pylint: disable=too-many-arguments
             self,
-            console: "Console",
-            renderables: Iterable["ConsoleRenderable"],
+            console: Console,  # noqa
+            renderables: Iterable[ConsoleRenderable],
             log_time: Optional[datetime] = None,
             time_format: str = '[%x %X]',
             level: TextType = "",

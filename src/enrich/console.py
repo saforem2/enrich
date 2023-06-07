@@ -7,7 +7,7 @@ from rich.ansi import AnsiDecoder
 import rich.console as rich_console
 from rich.file_proxy import FileProxy
 from rich.theme import Theme
-from enrich import STYLES
+from enrich.style import STYLES
 
 
 def get_theme():
@@ -91,7 +91,7 @@ def should_do_markup(stream: TextIO = sys.stdout) -> bool:
     if "xterm" in term:
         return True
 
-    if term == "dumb":
+    if term.lower() == "dumb":
         return False
 
     # Use tty detection logic as last resort because there are numerous
@@ -99,3 +99,24 @@ def should_do_markup(stream: TextIO = sys.stdout) -> bool:
     # - stdin.isatty() is the only one returning true, even on a real terminal
     # - stderr returting false if user user uses a error stream coloring solution
     return stream.isatty()
+
+
+if __name__ == "__main__":  # pragma: no cover
+    import argparse
+    parser = argparse.ArgumentParser()
+    from rich.text import Text
+    parser.add_argument("--html", action="store_true", help="Export as HTML table")
+    args = parser.parse_args()
+    html: bool = args.html
+    from rich.table import Table
+    console = Console(record=True, width=120) if html else Console()
+    table = Table("Name", "Styling")
+    for style_name, style in STYLES.items():
+        table.add_row(Text(style_name, style=style), str(style))
+
+    console.print(table)
+    if html:
+        outfile = 'enrich_styles.html'
+        print(f'Saving to `{outfile}`')
+        with open(outfile, 'w') as f:
+            f.write(console.export_html(inline_styles=True))
