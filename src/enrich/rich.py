@@ -42,7 +42,8 @@ from rich.table import Table
 from rich.table import Table
 import rich.tree
 
-from l2hmc import get_logger
+# from l2hmc import get_logger
+# from enrich import get_logger
 
 # from l2hmc.configs import Steps
 
@@ -56,45 +57,10 @@ HEIGHT = size.lines
 os.environ['COLUMNS'] = f'{WIDTH}'
 # os.environ['COLUMNS'] = f'{size.columns}'
 
-# STYLES = {
-#     # 'color': Style(color='#676767'),
-#     # 'filepath': Style(color='#50FA7B', bold=True),
-#     # 'filename': Style(color='#BD93F9', bold=True),
-#     # # 'info': Style(color='#29B6F6'),
-#     # # 'warning': Style(color='#FD971F'),
-#     # # 'error': Style(color='#FF5252', bold=True),
-#     # # 'logging.level.warning': Style(color='#FD971F'),
-#     # 'logging.level.info': Style(color='#29B6F6'),
-#     # 'logging.level.warning': Style(color='#FD971F'),
-#     # 'logging.level.error': Style(color='#FF5252'),
-#     # 'yellow': Style(color='#FFFF00'),
-#     # "time": Style(color="#676767"),
-#     # 'log.time': Style(color='#676767'),
-#     # # 'repr.attrib_name': Style(color="#676767"),
-#     # "hidden": Style(color="#383b3d", dim=True),
-#     # "num": Style(color='#409CDC', bold=True),
-#     # # 'repr.number': Style(color='#409CDC', bold=False),
-#     # "highlight": Style(color="#111111", bgcolor="#FFFF00", bold=True),
-# }
-#
-
-
 def get_console(**kwargs) -> Console:
     interactive = is_interactive()
     from rich.theme import Theme
     theme = Theme(STYLES)
-    # outdir = Path(os.getcwd()).resolve().absolute()
-    # outfile = outdir.joinpath('console.log').as_posix()
-    # width = int(
-    #     max(
-    #         [
-    #             os.get_terminal_size()[0],
-    #             shutil.get_terminal_size()[0],
-    #         ]
-    #     )
-    # )
-    # if width <= 100:
-    #     width = 255
     console = Console(
         force_jupyter=interactive,
         log_path=False,
@@ -295,7 +261,7 @@ def print_config(
         resolve (bool, optional): Whether to resolve reference fields of
             DictConfig.
     """
-    from l2hmc.configs import OUTPUTS_DIR
+    # from l2hmc.configs import OUTPUTS_DIR
     # style = "dim"
     tree = rich.tree.Tree("CONFIG")  # , style=style, guide_style=style)
 
