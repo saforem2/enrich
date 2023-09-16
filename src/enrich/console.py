@@ -8,11 +8,29 @@ import rich.console as rich_console
 from rich.file_proxy import FileProxy
 from rich.theme import Theme
 from enrich.style import STYLES
+# from enrich.logging import RichHandler
 
 
 def get_theme():
     return Theme(STYLES)
 
+
+def is_interactive() -> bool:
+    from IPython.core.getipython import get_ipython
+    # from IPython import get_ipython
+    eval = os.environ.get('INTERACTIVE', None) is not None
+    bval = get_ipython() is not None
+    return (eval or bval)
+
+
+def get_width():
+    width = os.environ.get('COLUMNS', os.environ.get('WIDTH', 255))
+    if width is not None:
+        return int(width)
+
+    size = shutil.get_terminal_size()
+    os.environ['COLUMNS'] = str(size.columns)
+    return size.columns
 
 class Console(rich_console.Console):
     """Extends rich Console class."""
@@ -101,6 +119,20 @@ def should_do_markup(stream: TextIO = sys.stdout) -> bool:
     return stream.isatty()
 
 
+def get_console(**kwargs) -> Console:
+    interactive = is_interactive()
+    from rich.theme import Theme
+    theme = Theme(STYLES)
+    console = Console(
+        force_jupyter=interactive,
+        log_path=False,
+        theme=theme,
+        soft_wrap=True,
+        **kwargs
+    )
+    return console
+
+
 if __name__ == "__main__":  # pragma: no cover
     import argparse
     parser = argparse.ArgumentParser()
@@ -120,3 +152,5 @@ if __name__ == "__main__":  # pragma: no cover
         print(f'Saving to `{outfile}`')
         with open(outfile, 'w') as f:
             f.write(console.export_html(inline_styles=True))
+
+
