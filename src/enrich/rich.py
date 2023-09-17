@@ -42,20 +42,10 @@ from rich.table import Table
 from rich.table import Table
 import rich.tree
 
-# from l2hmc import get_logger
-# from enrich import get_logger
-
-# from l2hmc.configs import Steps
-
-
-# log = logging.getLogger(__name__)
-
-# WIDTH = max(150, int(os.environ.get('COLUMNS', 150)))
 size = shutil.get_terminal_size()
 WIDTH = size.columns
 HEIGHT = size.lines
 os.environ['COLUMNS'] = f'{WIDTH}'
-# os.environ['COLUMNS'] = f'{size.columns}'
 
 def get_console(**kwargs) -> Console:
     interactive = is_interactive()
@@ -524,6 +514,7 @@ BEAT_TIME = 0.008
 
 COLORS = ["cyan", "magenta", "red", "green", "blue", "purple"]
 
+from enrich import get_logger
 log = get_logger(__name__)
 handlers = log.handlers
 if (
