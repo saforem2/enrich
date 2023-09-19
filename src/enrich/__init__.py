@@ -6,9 +6,11 @@ import logging
 import os
 from typing import Optional
 from enrich.console import get_console
-from enrich.logging import RichHandler
+from enrich.handler import RichHandler
+from enrich.config import STYLES
 
 os.environ['PYTHONIOENCODING'] = 'utf-8'
+
 
 def get_file_logger(
         name: Optional[str] = None,
@@ -64,3 +66,29 @@ def get_logger(
     ):
         log.handlers = [log.handlers[0]]
     return log
+
+
+def print_styles():
+    import argparse
+    parser = argparse.ArgumentParser()
+    from rich.text import Text
+    from enrich.console import Console
+    parser.add_argument("--html", action="store_true", help="Export as HTML table")
+    args = parser.parse_args()
+    html: bool = args.html
+    from rich.table import Table
+    console = Console(record=True, width=120) if html else Console()
+    table = Table("Name", "Styling")
+    for style_name, style in STYLES.items():
+        table.add_row(Text(style_name, style=style), str(style))
+
+    console.print(table)
+    if html:
+        outfile = 'enrich_styles.html'
+        print(f'Saving to `{outfile}`')
+        with open(outfile, 'w') as f:
+            f.write(console.export_html(inline_styles=True))
+
+
+if __name__ == "__main__":  # pragma: no cover
+    print_styles()
