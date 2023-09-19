@@ -13,9 +13,13 @@ dynamic = ["version"]
 name = "enrich"
 description = "enrich"
 readme = "README.md"
-authors = [{ "name" = "Sorin Sbarnea", "email" = "sorin.sbarnea@gmail.com" }]
+authors = [
+  { "name" = "Sorin Sbarnea", "email" = "sorin.sbarnea@gmail.com" },
+  { "name" = "Sam Foreman", "email" = "saforem2@gmail.com" },
+]
 maintainers = [
-  { "name" = "Sorin Sbarnea", "email" = "sorin.sbarnea@gmail.com" }
+  { "name" = "Sorin Sbarnea", "email" = "sorin.sbarnea@gmail.com" },
+  { "name" = "Sam Foreman", "email" = "saforem2@gmail.com" },
 ]
 license = { text = "MIT" }
 classifiers = [
@@ -40,7 +44,7 @@ classifiers = [
   "Topic :: Utilities",
 ]
 keywords = ["console", "logging", "rich"]
-dependencies = ["rich >= 9.5.1, < 12.5.0"]
+dependencies = ["rich"]
 
 [project.urls]
 homepage = "https://github.com/pycontribs/enrich"
