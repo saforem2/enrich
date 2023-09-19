@@ -7,7 +7,7 @@ from rich.ansi import AnsiDecoder
 import rich.console as rich_console
 from rich.file_proxy import FileProxy
 from rich.theme import Theme
-from enrich.style import STYLES
+from enrich.config import STYLES
 # from enrich.logging import RichHandler
 
 
