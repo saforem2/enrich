@@ -11,10 +11,42 @@ from typing import Any, Iterable, Optional
 from rich.logging import RichHandler as OriginalRichHandler
 from rich.text import Text, TextType, Span
 
-from enrich.style import STYLES
+from enrich.config import STYLES
 from enrich.console import Console
 from rich.console import ConsoleRenderable
 
+# from datetime import datetime
+# from typing import Any, Iterable, Optional
+
+# from rich.logging import RichHandler as OriginalRichHandler
+# from rich.text import Text, TextType, Span
+
+
+class RichHandler(OriginalRichHandler):
+    """Enriched handler that does not wrap."""
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        # RichHandler constructor does not allow custom renderer
+        # https://github.com/willmcgugan/rich/issues/438
+        self._log_render = FluidLogRender(
+            show_time=kwargs.get("show_time", False),
+            show_level=kwargs.get("show_level", True),
+            show_path=kwargs.get("show_path", False),
+        )  # type: ignore
+
+
+
+# class RichHandler(OriginalRichHandler):
+#     """Enriched handler that does not wrap."""
+#     def __init__(self, *args: Any, **kwargs: Any) -> None:
+#         super().__init__(*args, **kwargs)
+#         # RichHandler constructor does not allow custom renderer
+#         # https://github.com/willmcgugan/rich/issues/438
+#         self._log_render = FluidLogRender(
+#             show_time=kwargs.get("show_time", False),
+#             show_level=kwargs.get("show_level", True),
+#             show_path=kwargs.get("show_path", False),
+#         )  # type: ignore
 
 class FluidLogRender:  # pylint: disable=too-few-public-methods
     """Renders log by not using columns and avoiding any wrapping."""
@@ -85,14 +117,3 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
         return result
 
 
-class RichHandler(OriginalRichHandler):
-    """Enriched handler that does not wrap."""
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        # RichHandler constructor does not allow custom renderer
-        # https://github.com/willmcgugan/rich/issues/438
-        self._log_render = FluidLogRender(
-            show_time=kwargs.get("show_time", False),
-            show_level=kwargs.get("show_level", True),
-            show_path=kwargs.get("show_path", False),
-        )  # type: ignore
