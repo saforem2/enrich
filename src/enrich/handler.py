@@ -55,7 +55,7 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
             show_time: bool = True,
             show_level: bool = True,
             show_path: bool = True,
-            time_format: str = "[%x %X]",
+            time_format: str = "[%Y-%m-%d %H:%M:%S]",
 
     ) -> None:
         self.show_time = show_time
@@ -66,10 +66,10 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
 
     def __call__(  # pylint: disable=too-many-arguments
             self,
-            console: Console,  # noqa
+            console: Console,  # type: ignore
             renderables: Iterable[ConsoleRenderable],
             log_time: Optional[datetime] = None,
-            time_format: str = '[%x %X]',
+            time_format: str = '[%Y-%m-%d %H:%M:%S]',
             level: TextType = "",
             path: Optional[str] = None,
             line_no: Optional[int] = None,
@@ -77,8 +77,7 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
     ) -> Text:
         result = Text()
         if self.show_time:
-            if log_time is None:
-                log_time = datetime.now()
+            log_time = datetime.now() if log_time is None else log_time
             log_time_display = log_time.strftime(time_format or self.time_format)
             result += Text(log_time_display, style=STYLES['logging.time'])
             self._last_time = log_time_display
@@ -115,5 +114,3 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
         for elem in renderables:
             result += elem
         return result
-
-
