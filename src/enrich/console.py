@@ -24,13 +24,14 @@ def is_interactive() -> bool:
 
 
 def get_width():
+    import shutil
     width = os.environ.get('COLUMNS', os.environ.get('WIDTH', 255))
     if width is not None:
         return int(width)
-
     size = shutil.get_terminal_size()
     os.environ['COLUMNS'] = str(size.columns)
     return size.columns
+
 
 class Console(rich_console.Console):
     """Extends rich Console class."""
@@ -44,6 +45,15 @@ class Console(rich_console.Console):
 
         if "soft_wrap" not in kwargs:
             kwargs["soft_wrap"] = True
+
+        if "theme" not in kwargs:
+            kwargs['theme'] = get_theme()
+
+        if "markup" not in kwargs:
+            kwargs['markup'] = True
+
+        if "width" not in kwargs:
+            kwargs['width'] = 55510
 
         # Unless user already mentioning terminal preference, we use our
         # heuristic to make an informed decision.
@@ -120,14 +130,24 @@ def should_do_markup(stream: TextIO = sys.stdout) -> bool:
 
 
 def get_console(**kwargs) -> Console:
-    interactive = is_interactive()
+    # interactive = is_interactive()
     from rich.theme import Theme
-    theme = Theme(STYLES)
+    # theme = Theme(STYLES)
+    if "width" not in kwargs:
+        kwargs['width'] = 9999
+    if "log_path" not in kwargs:
+        kwargs['log_path'] = True
+    if "soft_wrap" not in kwargs:
+        kwargs['soft_wrap'] = False
+    if "theme" not in kwargs:
+        kwargs['theme'] = Theme(STYLES)
+    if "force_jupyter" not in kwargs:
+        kwargs['force_jupyter'] = is_interactive()
     console = Console(
-        force_jupyter=interactive,
-        log_path=False,
-        theme=theme,
-        soft_wrap=True,
+        # force_jupyter=interactive,
+        # log_path=False,
+        # theme=theme,
+        # soft_wrap=False,
         **kwargs
     )
     return console
