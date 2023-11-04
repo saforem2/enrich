@@ -2,21 +2,22 @@
 enrich/__init__.py
 """
 from __future__ import absolute_import, annotations, division, print_function
-from typing import Dict
-from rich.style import Style
+# from typing import Dict
+# from rich.style import Style
 from contextlib import contextmanager
 from dataclasses import dataclass, field
 import json
 import os
 from pathlib import Path
-import shutil
+# import shutil
 import time
 from typing import Optional
 from typing import Any
 from typing import Generator
 
+from enrich import get_logger
 from enrich.config import STYLES
-from enrich.console import Console
+from enrich.console import get_console, Console  # , get_width, is_interactive
 from enrich.handler import RichHandler
 from omegaconf import DictConfig, OmegaConf
 import pandas as pd
@@ -41,41 +42,41 @@ from rich.table import Table
 import rich.tree
 
 
-def get_console(**kwargs) -> Console:
-    interactive = is_interactive()
-    from rich.theme import Theme
-    theme = Theme(STYLES)
-    console = Console(
-        force_jupyter=interactive,
-        log_path=False,
-        theme=theme,
-        soft_wrap=True,
-        # file=outfile,
-        # redirect=(get_world_size() > 1),
-        # width=int(width),
-        **kwargs
-    )
-    # from rich.console import Console
-    # console = Console()
-    return console
+# def get_console(**kwargs) -> Console:
+#     interactive = is_interactive()
+#     from rich.theme import Theme
+#     theme = Theme(STYLES)
+#     console = Console(
+#         force_jupyter=interactive,
+#         log_path=False,
+#         theme=theme,
+#         soft_wrap=True,
+#         # file=outfile,
+#         # redirect=(get_world_size() > 1),
+#         # width=int(width),
+#         **kwargs
+#     )
+#     # from rich.console import Console
+#     # console = Console()
+#     return console
 
 
-def is_interactive() -> bool:
-    from IPython.core.getipython import get_ipython
-    # from IPython import get_ipython
-    eval = os.environ.get('INTERACTIVE', None) is not None
-    bval = get_ipython() is not None
-    return (eval or bval)
+# def is_interactive() -> bool:
+#     from IPython.core.getipython import get_ipython
+#     # from IPython import get_ipython
+#     eval = os.environ.get('INTERACTIVE', None) is not None
+#     bval = get_ipython() is not None
+#     return (eval or bval)
 
 
-def get_width():
-    width = os.environ.get('COLUMNS', os.environ.get('WIDTH', 255))
-    if width is not None:
-        return int(width)
-
-    size = shutil.get_terminal_size()
-    os.environ['COLUMNS'] = str(size.columns)
-    return size.columns
+# def get_width():
+#     width = os.environ.get('COLUMNS', os.environ.get('WIDTH', 255))
+#     if width is not None:
+#         return int(width)
+#
+#     size = shutil.get_terminal_size()
+#     os.environ['COLUMNS'] = str(size.columns)
+#     return size.columns
 
 
 def make_layout(ratio: int = 4, visible: bool = True) -> Layout:
@@ -286,9 +287,9 @@ def print_config(
     cfgdict = OmegaConf.to_object(config)
     logdir = Path(os.getcwd()).resolve().as_posix()
     if not config.get('debug_mode', False):
-        dbfpath = Path(OUTPUTS_DIR).joinpath('logdirs.csv')
+        dbfpath = Path(os.getcwd()).joinpath('logdirs.csv')
     else:
-        dbfpath = Path(OUTPUTS_DIR).joinpath('logdirs-debug.csv')
+        dbfpath = Path(os.getcwd()).joinpath('logdirs-debug.csv')
 
     if dbfpath.is_file():
         mode = 'a'
@@ -499,8 +500,6 @@ def printarr(*arrs, float_width=6):
     finally:
         del frame
 
-        import time
-
 
 # console = Console()
 
@@ -508,7 +507,6 @@ BEAT_TIME = 0.008
 
 COLORS = ["cyan", "magenta", "red", "green", "blue", "purple"]
 
-from enrich import get_logger
 log = get_logger(__name__)
 handlers = log.handlers
 if (
@@ -760,7 +758,8 @@ if __name__ == "__main__":  # pragma: no cover
     args = parser.parse_args()
     html: bool = args.html
     from rich.table import Table
-    console = Console(record=True, width=120) if html else Console()
+    # console = Console(record=True, width=120) if html else Console()
+    console = get_console(record=html, width=150)
     table = Table("Name", "Styling")
     for style_name, style in STYLES.items():
         table.add_row(Text(style_name, style=style), str(style))
