@@ -12,7 +12,7 @@ from rich.logging import RichHandler as OriginalRichHandler
 from rich.text import Text, TextType, Span
 
 from enrich.config import STYLES
-from enrich.console import Console
+from enrich.console import get_console, Console
 from rich.console import ConsoleRenderable
 
 # from datetime import datetime
@@ -25,13 +25,19 @@ from rich.console import ConsoleRenderable
 class RichHandler(OriginalRichHandler):
     """Enriched handler that does not wrap."""
     def __init__(self, *args: Any, **kwargs: Any) -> None:
+        if 'console' not in kwargs:
+            kwargs['console'] = get_console(
+                redirect=False,
+                width=9999,
+                markup=True
+            )
         super().__init__(*args, **kwargs)
         # RichHandler constructor does not allow custom renderer
         # https://github.com/willmcgugan/rich/issues/438
         self._log_render = FluidLogRender(
-            show_time=kwargs.get("show_time", False),
+            show_time=kwargs.get("show_time", True),
             show_level=kwargs.get("show_level", True),
-            show_path=kwargs.get("show_path", False),
+            show_path=kwargs.get("show_path", True),
         )  # type: ignore
 
 
