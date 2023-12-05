@@ -133,7 +133,7 @@ STYLES: Dict[str, Style] = {
     # "log.time": Style(color=DARK["cyan"], dim=True),
     "log.message": Style.null(),
     # 'repr.attr': Style(color=DARK['blue_grey']),
-    'repr.attr': Style(color='magenta'),
+    'repr.attr': Style(color='bright_magenta'),
     'repr.attrib_name': Style(color="bright_magenta", bold=False, italic=True),
     "repr.attrib_equal": Style(bold=True, color="yellow"),
     "repr.attrib_value": Style(color="bright_magenta", italic=False),
