@@ -134,7 +134,7 @@ STYLES: Dict[str, Style] = {
     "log.message": Style.null(),
     # 'repr.attr': Style(color=DARK['blue_grey']),
     'repr.attr': Style(color='magenta'),
-    'repr.attrib_name': Style(color="bright_blue", italic=True),
+    'repr.attrib_name': Style(color="bright_magenta", bold=False, italic=True),
     "repr.attrib_equal": Style(bold=True, color="yellow"),
     "repr.attrib_value": Style(color="bright_magenta", italic=False),
     "repr.ellipsis": Style(color="yellow"),
@@ -151,7 +151,7 @@ STYLES: Dict[str, Style] = {
     "repr.tag_end": Style(bold=True),
     "repr.tag_name": Style(color="bright_magenta", bold=True),
     "repr.tag_contents": Style(color="default"),
-    'repr.number': Style(color="magenta"),
+    'repr.number': Style(color="bright_cyan", bold=True, italic=False),
     "repr.number_complex": Style(color="cyan", bold=True, italic=False),  # same
     "repr.bool_true": Style(color="bright_green", italic=True),
     "repr.bool_false": Style(color="bright_red", italic=True),
