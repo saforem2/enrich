@@ -151,8 +151,8 @@ STYLES: Dict[str, Style] = {
     "repr.tag_end": Style(bold=True),
     "repr.tag_name": Style(color="bright_magenta", bold=True),
     "repr.tag_contents": Style(color="default"),
-    'repr.number': Style(color="bright_cyan", bold=True, italic=False),
-    "repr.number_complex": Style(color="cyan", bold=True, italic=False),  # same
+    'repr.number': Style(color="cyan", bold=True, italic=False),
+    "repr.number_complex": Style(color="bright_cyan", bold=True, italic=False),  # same
     "repr.bool_true": Style(color="bright_green", italic=True),
     "repr.bool_false": Style(color="bright_red", italic=True),
     "repr.none": Style(color=MAGENTA_, italic=True),
