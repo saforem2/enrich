@@ -133,8 +133,8 @@ def get_console(**kwargs) -> Console:
     # interactive = is_interactive()
     from rich.theme import Theme
     # theme = Theme(STYLES)
-    if "width" not in kwargs:
-        kwargs['width'] = 9999
+    # if "width" not in kwargs:
+    #     kwargs['width'] = 9999
     if "log_path" not in kwargs:
         kwargs['log_path'] = True
     if "soft_wrap" not in kwargs:

@@ -62,12 +62,14 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
             show_level: bool = True,
             show_path: bool = True,
             time_format: str = "[%Y-%m-%d %H:%M:%S]",
+            link_path: Optional[bool] = False,
 
     ) -> None:
         self.show_time = show_time
         self.show_level = show_level
         self.show_path = show_path
         self.time_format = time_format
+        self.link_path = link_path
         self._last_time: Optional[str] = None
 
     def __call__(  # pylint: disable=too-many-arguments
@@ -84,7 +86,9 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
         result = Text()
         if self.show_time:
             log_time = datetime.now() if log_time is None else log_time
-            log_time_display = log_time.strftime(time_format or self.time_format)
+            log_time_display = log_time.strftime(
+                time_format or self.time_format
+            )
             result += Text(log_time_display, style=STYLES['logging.time'])
             self._last_time = log_time_display
         if self.show_level:
@@ -104,15 +108,18 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
             path_text.append(
                 path, style=(
                     f"link file://{link_path}" + " underline"
+                    if link_path else ""
                     # + STYLES["repr.url"]
                 )
-                if link_path else ""
             )
             if line_no:
                 path_text.append(":")
                 path_text.append(
                     f"{line_no}",
-                    style=f"link file://{link_path}#{line_no}" if link_path else "",
+                    style=(
+                        f"link file://{link_path}#{line_no}"
+                        if link_path else ""
+                    ),
                 )
             path_text.append("]", style=STYLES['log.path'])
             result += path_text
