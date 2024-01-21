@@ -1,5 +1,5 @@
 """
-enrich/__init__.py
+enrich/style.py
 """
 from __future__ import absolute_import, annotations, division, print_function
 # from typing import Dict
@@ -16,8 +16,8 @@ from typing import Any
 from typing import Generator
 
 from enrich import get_logger
-from enrich.config import STYLES
-from enrich.console import get_console, Console  # , get_width, is_interactive
+from enrich.config import STYLES, DEFAULT_STYLES
+from enrich.console import get_console
 from enrich.handler import RichHandler
 from omegaconf import DictConfig, OmegaConf
 import pandas as pd
@@ -40,43 +40,6 @@ from rich.progress import (
 import rich.syntax
 from rich.table import Table
 import rich.tree
-
-
-# def get_console(**kwargs) -> Console:
-#     interactive = is_interactive()
-#     from rich.theme import Theme
-#     theme = Theme(STYLES)
-#     console = Console(
-#         force_jupyter=interactive,
-#         log_path=False,
-#         theme=theme,
-#         soft_wrap=True,
-#         # file=outfile,
-#         # redirect=(get_world_size() > 1),
-#         # width=int(width),
-#         **kwargs
-#     )
-#     # from rich.console import Console
-#     # console = Console()
-#     return console
-
-
-# def is_interactive() -> bool:
-#     from IPython.core.getipython import get_ipython
-#     # from IPython import get_ipython
-#     eval = os.environ.get('INTERACTIVE', None) is not None
-#     bval = get_ipython() is not None
-#     return (eval or bval)
-
-
-# def get_width():
-#     width = os.environ.get('COLUMNS', os.environ.get('WIDTH', 255))
-#     if width is not None:
-#         return int(width)
-#
-#     size = shutil.get_terminal_size()
-#     os.environ['COLUMNS'] = str(size.columns)
-#     return size.columns
 
 
 def make_layout(ratio: int = 4, visible: bool = True) -> Layout:
@@ -234,7 +197,7 @@ def nested_dict_to_df(d):
 
 
 def print_config(
-    config: DictConfig,
+    config: DictConfig | dict | Any,
     resolve: bool = True,
 ) -> None:
     """Prints content of DictConfig using Rich library and its tree structure.
@@ -246,22 +209,14 @@ def print_config(
         resolve (bool, optional): Whether to resolve reference fields of
             DictConfig.
     """
-    # from l2hmc.configs import OUTPUTS_DIR
-    # style = "dim"
     tree = rich.tree.Tree("CONFIG")  # , style=style, guide_style=style)
-
     quee = []
-    # yaml_strs = ""
-
     for f in config:
         if f not in quee:
             quee.append(f)
-
     dconfig = {}
     for f in quee:
-
         branch = tree.add(f)  # , style=style, guide_style=style)
-
         config_group = config[f]
         if isinstance(config_group, DictConfig):
             branch_content = OmegaConf.to_yaml(config_group, resolve=resolve)
@@ -269,19 +224,14 @@ def print_config(
         else:
             branch_content = str(config_group)
             cfg = str(config_group)
-
         dconfig[f] = cfg
         branch.add(rich.syntax.Syntax(branch_content, "yaml"))
-
     outfile = Path(os.getcwd()).joinpath('config_tree.log')
-    # with open(outfile, 'wt') as f:
     with outfile.open('wt') as f:
         console = rich.console.Console(file=f)
         console.print(tree)
-
     with open('config.json', 'w') as f:
         f.write(json.dumps(dconfig))
-
     cfgfile = Path('config.yaml')
     OmegaConf.save(config, cfgfile, resolve=True)
     cfgdict = OmegaConf.to_object(config)
@@ -290,7 +240,6 @@ def print_config(
         dbfpath = Path(os.getcwd()).joinpath('logdirs.csv')
     else:
         dbfpath = Path(os.getcwd()).joinpath('logdirs-debug.csv')
-
     if dbfpath.is_file():
         mode = 'a'
         header = False
@@ -753,17 +702,18 @@ if __name__ == "__main__":  # pragma: no cover
     import argparse
     parser = argparse.ArgumentParser()
     from rich.text import Text
-    from enrich.console import Console
+    # from enrich.console import Console
     parser.add_argument("--html", action="store_true", help="Export as HTML table")
     args = parser.parse_args()
     html: bool = args.html
-    from rich.table import Table
+    # from rich.table import Table
     # console = Console(record=True, width=120) if html else Console()
     console = get_console(record=html, width=150)
     table = Table("Name", "Styling")
-    for style_name, style in STYLES.items():
+    styles = DEFAULT_STYLES
+    styles |= STYLES
+    for style_name, style in styles.items():
         table.add_row(Text(style_name, style=style), str(style))
-
     console.print(table)
     if html:
         outfile = 'enrich_styles.html'
