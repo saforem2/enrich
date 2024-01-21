@@ -94,10 +94,10 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
                 time_format or self.time_format
             )
             d, t = log_time_display.split(' ')
-            result += Text("[", style=STYLES.get('repr.brace', ''))
+            result += Text("[", style=STYLES.get('log.brace', ''))
             result += Text(f'{d} ', style=STYLES.get('logging.date', ''))
             result += Text(t, style=STYLES.get('logging.time', ''))
-            result += Text("]", style=STYLES.get('repr.brace', ''))
+            result += Text("]", style=STYLES.get('log.brace', ''))
             # result += Text(log_time_display, style=STYLES['logging.time'])
             self._last_time = log_time_display
         if self.show_level:
@@ -108,21 +108,21 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
                 else:
                     style = Style.null()
                 level.spans = [Span(0, len(lstr), style)]
-                ltext = Text('[', style=STYLES.get('repr.brace', ''))
+                ltext = Text('[', style=STYLES.get('log.brace', ''))
                 ltext.append(Text(f'{lstr}', style=style))
-                ltext.append(Text(']', style=STYLES.get('repr.brace', '')))
+                ltext.append(Text(']', style=STYLES.get('log.brace', '')))
                 # ltext = Text(f'[{lstr}]', style=style)
             elif isinstance(level, str):
                 lstr = level.rstrip(' ')
                 style = f"logging.level.{str(lstr)}" if COLOR else Style.null()
-                ltext = Text('[', style=STYLES.get('repr.brace', ''))
+                ltext = Text('[', style=STYLES.get('log.brace', ''))
                 ltext = Text(f"{lstr}", style=style)  # f"logging.level.{str(lstr)}")
-                ltext.append(Text(']', style=STYLES.get('repr.brace', '')))
+                ltext.append(Text(']', style=STYLES.get('log.brace', '')))
             else:
                 raise TypeError('Unexpected type for level')
             result += ltext
         if self.show_path and path:
-            path_text = Text("[", style=STYLES.get('repr.brace', ''))
+            path_text = Text("[", style=STYLES.get('log.brace', ''))
             # path_text.append( /)
             path_text.append(
                 path,
@@ -135,16 +135,16 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
                 # )
             )
             if line_no:
-                path_text.append(Text(":", style=STYLES.get('repr.colon', '')))
+                path_text.append(Text(":", style=STYLES.get('log.colon', '')))
                 path_text.append(
                     f"{line_no}",
-                    style=STYLES.get('repr.number', ''),
+                    style=STYLES.get('log.linenumber', ''),
                     # style=(
                     #     f"link file://{link_path}#{line_no}"
                     #     if link_path else ""
                     # ),
                 )
-            path_text.append("]", style=STYLES.get('repr.brace', ''))
+            path_text.append("]", style=STYLES.get('log.brace', ''))
             result += path_text
         result += Text(' - ', style=STYLES.get('repr.dash', ''))
         for elem in renderables:
