@@ -125,7 +125,7 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
             path_text = Text("[", style=STYLES.get('log.brace', ''))
             # path_text.append( /)
             path_text.append(
-                path,
+                path.rstrip('.py'),
                 style=STYLES.get('log.path', ''),
                 # style=STYLES.get('log.path', Style(color='black')),
                 # style=(
