@@ -21,6 +21,18 @@ def get_file_logger(
     import logging
     fname = 'output' if fname is None else fname
     log = logging.getLogger(name)
+    # if rank_zero_only:
+    #     fh = logging.getLogger(name)
+    #     if RANK == 0:
+    #         log.setLevel(level)
+    #         fh.setLevel(level)
+    #     else:
+    #         log.setLevel('CRITICAL')
+    #         fh.setLevel('CRITICAL')
+    # else:
+    #     fh = logging.FileHandler(f"{fname}-{RANK}.log")
+    #     log.setLevel(level)
+    #     fh.setLevel(level)
     fh = logging.FileHandler(f"{fname}.log")
     log.setLevel(level)
     fh.setLevel(level)
@@ -36,14 +48,16 @@ def get_file_logger(
 def get_logger(
         name: Optional[str] = None,
         level: str = 'INFO',
+        markup: Optional[bool] = True,
+        redirect: Optional[bool] = False,
         **kwargs,
 ) -> logging.Logger:
     import logging
     log = logging.getLogger(name)
     log.setLevel(level)
     console = get_console(
-        markup=True,
-        redirect=False,
+        markup=markup,
+        redirect=redirect,
         **kwargs
     )
     if console.is_jupyter:
@@ -56,7 +70,7 @@ def get_logger(
             show_time=True,
             show_level=True,
             show_path=True,
-            # markup=use_markup,
+            markup=markup,
             enable_link_path=False,
         )
     )

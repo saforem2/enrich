@@ -8,10 +8,12 @@ https://github.com/willmcgugan/rich/blob/master/rich/_log_render.py
 from datetime import datetime
 from typing import Any, Iterable, Optional
 
+from rich.style import Style
+# from rich.style import Style
 from rich.logging import RichHandler as OriginalRichHandler
 from rich.text import Text, TextType, Span
 
-from enrich.config import STYLES
+from enrich.config import STYLES, NO_COLOR
 from enrich.console import get_console, Console
 from rich.console import ConsoleRenderable
 
@@ -20,6 +22,7 @@ from rich.console import ConsoleRenderable
 
 # from rich.logging import RichHandler as OriginalRichHandler
 # from rich.text import Text, TextType, Span
+COLOR = (not NO_COLOR)
 
 
 class RichHandler(OriginalRichHandler):
@@ -54,6 +57,7 @@ class RichHandler(OriginalRichHandler):
 #             show_path=kwargs.get("show_path", False),
 #         )  # type: ignore
 
+
 class FluidLogRender:  # pylint: disable=too-few-public-methods
     """Renders log by not using columns and avoiding any wrapping."""
     def __init__(
@@ -61,7 +65,7 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
             show_time: bool = True,
             show_level: bool = True,
             show_path: bool = True,
-            time_format: str = "[%Y-%m-%d %H:%M:%S]",
+            time_format: str = "%Y-%m-%d %H:%M:%S",
             link_path: Optional[bool] = False,
 
     ) -> None:
@@ -77,7 +81,7 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
             console: Console,  # type: ignore
             renderables: Iterable[ConsoleRenderable],
             log_time: Optional[datetime] = None,
-            time_format: str = '[%Y-%m-%d %H:%M:%S]',
+            time_format: str = '%Y-%m-%d %H:%M:%S',
             level: TextType = "",
             path: Optional[str] = None,
             line_no: Optional[int] = None,
@@ -89,41 +93,60 @@ class FluidLogRender:  # pylint: disable=too-few-public-methods
             log_time_display = log_time.strftime(
                 time_format or self.time_format
             )
-            result += Text(log_time_display, style=STYLES['logging.time'])
+            d, t = log_time_display.split(' ')
+            result += Text("[", style=STYLES.get('log.brace', ''))
+            result += Text(f'{d} ', style=STYLES.get('logging.date', ''))
+            result += Text(t, style=STYLES.get('logging.time', ''))
+            result += Text("]", style=STYLES.get('log.brace', ''))
+            # result += Text(log_time_display, style=STYLES['logging.time'])
             self._last_time = log_time_display
         if self.show_level:
             if isinstance(level, Text):
                 lstr = level.plain.rstrip(' ')
-                style = level.spans[0].style
+                if COLOR:
+                    style = level.spans[0].style
+                else:
+                    style = Style.null()
                 level.spans = [Span(0, len(lstr), style)]
-                ltext = Text(f'[{lstr}]', style=style)
+                ltext = Text('[', style=STYLES.get('log.brace', ''))
+                ltext.append(Text(f'{lstr}', style=style))
+                ltext.append(Text(']', style=STYLES.get('log.brace', '')))
+                # ltext = Text(f'[{lstr}]', style=style)
             elif isinstance(level, str):
                 lstr = level.rstrip(' ')
-                ltext = Text(f"[{lstr}]", style=f"logging.level.{str(lstr)}")
+                style = f"logging.level.{str(lstr)}" if COLOR else Style.null()
+                ltext = Text('[', style=STYLES.get('log.brace', ''))
+                ltext = Text(f"{lstr}", style=style)  # f"logging.level.{str(lstr)}")
+                ltext.append(Text(']', style=STYLES.get('log.brace', '')))
             else:
                 raise TypeError('Unexpected type for level')
             result += ltext
         if self.show_path and path:
-            path_text = Text("[", style=STYLES['log.path'])
+            path_text = Text("[", style=STYLES.get('log.brace', ''))
+            # path_text.append( /)
             path_text.append(
-                path, style=(
-                    f"link file://{link_path}" + " underline"
-                    if link_path else ""
-                    # + STYLES["repr.url"]
-                )
+                path.rstrip('.py'),
+                style=STYLES.get('log.path', ''),
+                # style=STYLES.get('log.path', Style(color='black')),
+                # style=(
+                #     f"link file://{link_path}" + " underline"
+                #     if link_path else ""
+                #     # + STYLES["repr.url"]
+                # )
             )
             if line_no:
-                path_text.append(":")
+                path_text.append(Text(":", style=STYLES.get('log.colon', '')))
                 path_text.append(
                     f"{line_no}",
-                    style=(
-                        f"link file://{link_path}#{line_no}"
-                        if link_path else ""
-                    ),
+                    style=STYLES.get('log.linenumber', ''),
+                    # style=(
+                    #     f"link file://{link_path}#{line_no}"
+                    #     if link_path else ""
+                    # ),
                 )
-            path_text.append("]", style=STYLES['log.path'])
+            path_text.append("]", style=STYLES.get('log.brace', ''))
             result += path_text
-        result += Text(' - ')
+        result += Text(' - ', style=STYLES.get('repr.dash', ''))
         for elem in renderables:
             result += elem
         return result

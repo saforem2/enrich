@@ -43,13 +43,17 @@ classifiers = [
   "Topic :: System :: Systems Administration",
   "Topic :: Utilities",
 ]
-keywords = ["console", "logging", "rich"]
-dependencies = ["rich"]
+keywords = ["console", "logging", "rich", "tui"]
+
+dependencies = [
+  "rich",
+  "omegaconf"
+]
 
 [project.urls]
-homepage = "https://github.com/pycontribs/enrich"
-repository = "https://github.com/pycontribs/enrich"
-changelog = "https://github.com/pycontribs/enrich/releases"
+homepage = "https://github.com/saforem2/enrich"
+repository = "https://github.com/saforem2/enrich"
+changelog = "https://github.com/saforem2/enrich/releases"
 
 [project.optional-dependencies]
 test = [
@@ -65,7 +69,6 @@ profile = "black"
 known_first_party = "subprocess_tee"
 
 [tool.mypy]
-python_version = 3.8
 color_output = true
 error_summary = true
 disallow_any_generics = true
