@@ -3,6 +3,48 @@
 Enriched extends [rich](https://pypi.org/project/rich/) library functionality
 with a set of changes that were not accepted to rich itself.
 
+## `rich` 🤝 `logging`
+
+- Our generalized [`RichHandler`](https://github.com/saforem2/enrich/blob/main/src/enrich/handler.py#L28) allows for `rich` style highlights **without line breaks**
+
+![image](https://github.com/saforem2/enrich/assets/5234251/65d69172-3d42-4268-a737-81ad8096b549)
+
+## Setup
+
+- `logging.config.dictConfig(...)`:
+
+    ```python
+    import yaml
+    with Path('logconf.yaml').open('r') as stream:
+        config = yaml.load(stream, Loader=yaml.FullLoader)
+    log_config = logging.config.dictConfig(config)
+    log = logging.getLogger(__name__)
+    log.setLevel('INFO')
+    ```
+
+- Where `logconf.yaml`:
+
+    ```yaml
+    ---
+    # logconf.yaml
+    handlers:
+      term:
+        class: enrich.handler.RichHandler
+        show_time: true
+        show_level: true
+        enable_link_path: false
+        level: DEBUG
+    root:
+      handlers: [term]
+    disable_existing_loggers: false
+    ...
+    ```
+
+
+
+
+## Original `README`
+
 ## Console with redirect support
 
 Our Console class adds one additional option to rich.Console in order to
