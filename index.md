@@ -22,11 +22,13 @@ highlights **without line breaks**
 <b>🤷🏻‍♂️ Ambivalent<b>
 </summary>
 
-<img src="./assets/logs/amvbivalent.png" class="stretch"
-alt="ambivalent" />
+<img
+src="https://github.com/saforem2/enrich/blob/main/assets/logs/amvbivalent.png"
+class="stretch" alt="ambivalent" />
 
-<img src="./assets/logs/ambivalent-transparent.png" class="stretch"
-alt="ambivalent-transparent" />
+<img
+src="https://github.com/saforem2/enrich/blob/main/assets/logs/ambivalent-transparent.png"
+class="stretch" alt="ambivalent-transparent" />
 
 </details>
 <details>
@@ -34,10 +36,11 @@ alt="ambivalent-transparent" />
 <b>😻 Catpuccin Latte<b>
 </summary>
 
-<img src="./assets/logs/catpuccin-latte.png" class="stretch"
-alt="catpuccin-latte" />
-<img src="./assets/logs/catpuccin-latte-transparent.png" class="stretch"
-alt="catpuccin-latte-transparent" />
+<img
+src="https://github.com/saforem2/enrich/blob/main/assets/logs/catpuccin-latte.png"
+class="stretch" alt="catpuccin-latte" /> <img
+src="https://github.com/saforem2/enrich/blob/main/assets/logs/catpuccin-latte-transparent.png"
+class="stretch" alt="catpuccin-latte-transparent" />
 
 </details>
 <details>
@@ -45,9 +48,11 @@ alt="catpuccin-latte-transparent" />
 <b>😈 Doom One<b>
 </summary>
 
-<img src="./assets/logs/doom-one.png" class="stretch" alt="doom-one" />
-<img src="./assets/logs/doom-one-transparent.png" class="stretch"
-alt="doom-one-transparent" />
+<img
+src="https://github.com/saforem2/enrich/blob/main/assets/logs/doom-one.png"
+class="stretch" alt="doom-one" /> <img
+src="https://github.com/saforem2/enrich/blob/main/assets/logs/doom-one-transparent.png"
+class="stretch" alt="doom-one-transparent" />
 
 </details>
 </details>
@@ -164,7 +169,7 @@ log.info("Text that we do not want pre-wrapped by logger: %s", 100 * "x")
 >
 > ### <span style="color: #FF5252;"><span class="quarto-shortcode__" data-is-shortcode="1" data-raw="{{&lt; iconify material-symbols ecg-heart &gt;}}"><span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="iconify" data-raw="iconify"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="material-symbols" data-raw="material-symbols"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="ecg-heart" data-raw="ecg-heart"></span></span> Status</span>
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">01</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">27</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">10:04:04</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">01</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">27</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">10:14:02</span>
 > </pre>
 > <!-- [[![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsaforem2.github.io&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)]{style="text-align:center;"} -->
 > <p align="center">
