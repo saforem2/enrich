@@ -28,6 +28,9 @@ format:
   gfm:
     author: Sam Foreman
     output-file: "index.md"
+  revealjs:
+    author: Sam Foreman
+    output-file: "index-revealjs.html"
 ---
 
 <details open><summary><b style="font-size:1.25em;"><code>rich</code> 🤝 <code>logging</code></b></summary>
@@ -36,33 +39,39 @@ format:
 [`RichHandler`](https://github.com/saforem2/enrich/blob/main/src/enrich/handler.py#L28) that allows
 for [`rich`](https://github.com/Textualize/rich) style highlights **without line breaks**
 
-::: {layout="[[35, -5, 35]]" layout-valign="bottom" style="display: flex; text-align:center; align-items: flex-end;"}
+<!-- ::: {layout="[[35, -5, 35]]" layout-valign="bottom" style="display: flex; text-align:center; align-items: flex-end;"} -->
 
-![`dark`](./assets/dark.png){#fig-dark .stretch}
+:::: {.columns style="display:flex;"}
 
-![`light`](./assets/light.png){#fig-light .stretch}
-
+::: {.column width="35%"}
+![`dark`](https://github.com/saforem2/enrich/blob/main/assets/dark.png?raw=true){#fig-dark .stretch}
 :::
+
+::: {.column width="35%"}
+![`light`](https://github.com/saforem2/enrich/blob/main/assets/light.png?raw=true){#fig-light .stretch}
+:::
+
+::::
 
 <details><summary><b>🤷🏻‍♂️  Ambivalent<b></summary>
 
-![ambivalent](./assets/logs/amvbivalent.png){.stretch}
+![ambivalent](https://github.com/saforem2/enrich/blob/main/assets/logs/amvbivalent.png){.stretch}
 
-![ambivalent-transparent](./assets/logs/ambivalent-transparent.png){.stretch}
+![ambivalent-transparent](https://github.com/saforem2/enrich/blob/main/assets/logs/ambivalent-transparent.png){.stretch}
 
 </details>
 
 <details><summary><b>😻 Catpuccin Latte<b></summary>
 
-![catpuccin-latte](./assets/logs/catpuccin-latte.png){.stretch}
-![catpuccin-latte-transparent](./assets/logs/catpuccin-latte-transparent.png){.stretch}
+![catpuccin-latte](https://github.com/saforem2/enrich/blob/main/assets/logs/catpuccin-latte.png){.stretch}
+![catpuccin-latte-transparent](https://github.com/saforem2/enrich/blob/main/assets/logs/catpuccin-latte-transparent.png){.stretch}
 
 </details>
 
 <details><summary><b>😈 Doom One<b></summary>
 
-![doom-one](./assets/logs/doom-one.png){.stretch}
-![doom-one-transparent](./assets/logs/doom-one-transparent.png){.stretch}
+![doom-one](https://github.com/saforem2/enrich/blob/main/assets/logs/doom-one.png){.stretch}
+![doom-one-transparent](https://github.com/saforem2/enrich/blob/main/assets/logs/doom-one-transparent.png){.stretch}
 
 </details>
 
