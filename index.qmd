@@ -1,0 +1,198 @@
+---
+# sidebar: false
+title: "`enrich`"
+callout-appearance: simple
+title-block-banner: false
+lightbox: true
+# citeproc: true
+citation:
+   author: Sam Foreman
+   type: webpage
+   title: "`enrich`"
+   url: https://saforem2.github.io/enrich
+editor:
+   render-on-save: true
+execute:
+   freeze: auto
+# filters:
+#   - lightbox
+twitter-card:
+    image: "./assets/thumbnail.png"
+    creator: "@saforem2"
+    site: "@saforem2"
+open-graph:
+    image: "./assets/thumbnail.png"
+format:
+  # html:
+  html: default
+  gfm:
+    author: Sam Foreman
+    output-file: "index.md"
+---
+
+<details open><summary><b style="font-size:1.25em;"><code>rich</code> 🤝 <code>logging</code></b></summary>
+
+`enrich` provides a generalized
+[`RichHandler`](https://github.com/saforem2/enrich/blob/main/src/enrich/handler.py#L28) that allows
+for [`rich`](https://github.com/Textualize/rich) style highlights **without line breaks**
+
+::: {layout="[[35, -5, 35]]" layout-valign="bottom" style="display: flex; text-align:center; align-items: flex-end;"}
+
+![`dark`](./assets/dark.png){#fig-dark .stretch}
+
+![`light`](./assets/light.png){#fig-light .stretch}
+
+:::
+
+<details><summary><b>🤷🏻‍♂️  Ambivalent<b></summary>
+
+![ambivalent](./assets/logs/amvbivalent.png){.stretch}
+
+![ambivalent-transparent](./assets/logs/ambivalent-transparent.png){.stretch}
+
+</details>
+
+<details><summary><b>😻 Catpuccin Latte<b></summary>
+
+![catpuccin-latte](./assets/logs/catpuccin-latte.png){.stretch}
+![catpuccin-latte-transparent](./assets/logs/catpuccin-latte-transparent.png){.stretch}
+
+</details>
+
+<details><summary><b>😈 Doom One<b></summary>
+
+![doom-one](./assets/logs/doom-one.png){.stretch}
+![doom-one-transparent](./assets/logs/doom-one-transparent.png){.stretch}
+
+</details>
+
+</details>
+
+
+## Setup
+
+- `logging.config.dictConfig(...)`:
+
+    ```python
+    import yaml
+    with Path('logconf.yaml').open('r') as stream:
+        config = yaml.load(stream, Loader=yaml.FullLoader)
+    log_config = logging.config.dictConfig(config)
+    log = logging.getLogger(__name__)
+    log.setLevel('INFO')
+    ```
+
+- Where `logconf.yaml`:
+
+    ```yaml
+    ---
+    # logconf.yaml
+    handlers:
+      term:
+        class: enrich.handler.RichHandler
+        show_time: true
+        show_level: true
+        enable_link_path: false
+        level: DEBUG
+    root:
+      handlers: [term]
+    disable_existing_loggers: false
+    ...
+    ```
+
+
+
+<details closed><summary><h1> Original README</h1></summary>
+
+## Original `README`
+
+## Console with redirect support
+
+Our Console class adds one additional option to rich.Console in order to
+redirect `sys.stdout` and `sys.stderr` streams using a FileProxy.
+
+```python
+from enrich.console import Console
+import sys
+
+console = Console(
+    redirect=True,  # <-- not supported by rich.console.Console
+    record=True)
+sys.write("foo")
+
+# this assert would have passed without redirect=True
+assert console.export_text() == "foo"
+```
+
+## Console with implicit soft wrapping
+
+If you want to produce fluid terminal output, one where the client terminal
+decides where to wrap the text instead of the application, you can now
+tell the Console constructor the soft_wrap preference.
+
+```python
+from enrich.console import Console
+import sys
+
+console = Console(soft_wrap=True)
+console.print(...)  # no longer need to pass soft_wrap to each print
+```
+
+## Console.print can also deal with ANSI escapes
+
+Extends Rich Console to detect if original text already had ANSI escapes and
+decodes it before processing it. This solves the case where printing
+output captured from other processes that contained ANSI escapes would brake.
+[upstream-404](https://github.com/willmcgugan/rich/discussions/404)
+
+## Soft-wrapping logger
+
+Rich logger assumes that you always have a fixed width console and it does
+wrap logged output according to it. Our alternative logger does exactly the
+opposite: it ignores the columns of the current console and prints output
+using a Console with soft wrapping enabled.
+
+The result are logged lines that can be displayed on any terminal or web
+page as they will allow the client to decide when to perform the wrapping.
+
+```python
+import logging
+from enrich.logging import RichHandler
+
+FORMAT = "%(message)s"
+logging.basicConfig(
+    level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
+)
+
+log = logging.getLogger("rich")
+log.info("Text that we do not want pre-wrapped by logger: %s", 100 * "x")
+```
+
+</details>
+
+## [{{< fa solid hourglass-end >}}]{.pink-text} Appendix
+
+::: {.callout-tip icon=false title='[{{< iconify material-symbols ecg-heart >}} Status]{style="color: #FF5252;"}' collapse="false" style="text-align: left!important; width:100%; border-color: var(--dim-text)!important; background-color: var(--bg-transparent); opacity:100%;"}
+```{python}
+#| echo: false
+import datetime
+from rich import print
+now = datetime.datetime.now()
+day = now.strftime('%m/%d/%Y')
+time = now.strftime('%H:%M:%S')
+print(' '.join([
+  "[dim italic]Last Updated[/]:",
+  f"[#F06292]{day}[/]",
+  f"[dim]@[/]",
+  f"[#1A8FFF]{time}[/]"
+]))
+```
+
+<!-- [[![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsaforem2.github.io&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)]{style="text-align:center;"} -->
+
+
+<p align="center">
+<a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+</p>
+
+:::
