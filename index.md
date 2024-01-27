@@ -15,25 +15,31 @@ highlights **without line breaks**
 
 <!-- ::: {layout="[[35, -5, 35]]" layout-valign="bottom" style="display: flex; text-align:center; align-items: flex-end;"} -->
 
+<div style="text-align:center;" align="center">
+  
+<img src="https://github.com/saforem2/enrich/blob/main/assets/dark.png?raw=true" width="35%" /> $\hspace{50pt}$ <img src="https://github.com/saforem2/enrich/blob/main/assets/light.png?raw=true" width="35%" />
+
+</div>
+
+<!--
 <div class="columns" style="display:flex;">
 
 <div class="column" width="35%">
 
 <img
-src="https://github.com/saforem2/enrich/blob/main/assets/dark.png?raw=true"
-class="stretch" />
+src="https://github.com/saforem2/enrich/blob/main/assets/dark.png?raw=true" width="35%" />
 
 </div>
 
 <div class="column" width="35%">
-
+  
 <img
-src="https://github.com/saforem2/enrich/blob/main/assets/light.png?raw=true"
-class="stretch" />
+src="https://github.com/saforem2/enrich/blob/main/assets/light.png?raw=true" width="35%" />
 
 </div>
 
 </div>
+-->
 
 <details>
 <summary>
