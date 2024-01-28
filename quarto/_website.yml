@@ -1,6 +1,6 @@
 website:
   sidebar: false
-  title: "Sam Foreman"
+  title: "`enrich`"
   page-navigation: true
   favicon: "./favicon.svg"
   back-to-top-navigation: true
@@ -10,15 +10,15 @@ website:
   repo-url: https://github.com/saforem2/enrich
   description: "My ramblings about science and computers"
   open-graph:
-    title: "Sam Foreman"
-    description: "My ramblings about science and computers"
-    image: "https://github.com/saforem2/enrich/blob/main/assets/thumbnail.png?raw=true"
+    title: "`enrich`"
+    description: "Enrich adds few missing features to the wonderful rich library."
+    image: "./assets/thumbnail.png"
   twitter-card:
-    site: "@saforem2"
+    site: "`enrich`"
     creator: "@saforem2"
-    title: "Sam Foreman"
-    description: "My ramblings about science and computers"
-    image: "https://github.com/saforem2/enrich/blob/main/assets/thumbnail.png?raw=true"
+    title: "`enrich`"
+    description: "Enrich adds few missing features to the wonderful rich library."
+    image: "./assets/thumbnail.png"
   navbar:
     # title: false
     logo: "./favicon.svg"
@@ -33,15 +33,15 @@ website:
             url: https://github.com/saforem2/enrich/blob/main/index.qmd
           - text: New Issue
             url: https://github.com/saforem2/enrich/issues/new/choose
-    left:
-      - href: "./qmd/posts.qmd"
-        text: "[{{< iconify line-md pencil >}}]{.red-text style='font-size: 1.0em;'} Posts"
-      - href: "./qmd/slides.qmd"
-        text: "[{{< iconify line-md image >}}]{.green-text style='font-size: 1.0em;'} Talks"
-      - href: "./qmd/projects.qmd"
-        text: "[{{< iconify line-md computer >}}]{.blue-text style='font-size:1.0em;'} Projects"
-      # - href: "./qmd/ezpz/ezpz.qmd"
-      #   text: "[{{< iconify ph sparkle >}}]{.yellow-text style='font-size:1.0em;'} Startup Times"
+    # left:
+    #   - href: "./qmd/posts.qmd"
+    #     text: "[{{< iconify line-md pencil >}}]{.red-text style='font-size: 1.0em;'} Posts"
+    #   - href: "./qmd/slides.qmd"
+    #     text: "[{{< iconify line-md image >}}]{.green-text style='font-size: 1.0em;'} Talks"
+    #   - href: "./qmd/projects.qmd"
+    #     text: "[{{< iconify line-md computer >}}]{.blue-text style='font-size:1.0em;'} Projects"
+    #   # - href: "./qmd/ezpz/ezpz.qmd"
+    #   #   text: "[{{< iconify ph sparkle >}}]{.yellow-text style='font-size:1.0em;'} Startup Times"
     right:
       - href: https://twitter.com/saforem2
         text: "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}"

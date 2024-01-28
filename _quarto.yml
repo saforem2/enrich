@@ -1,4 +1,6 @@
 title: Sam Foreman
+description: |
+  Enrich adds few missing features to the wonderful rich library.
 date: last-modified
 # date: today
 author-title: ""
@@ -13,7 +15,7 @@ favicon: "favicon.svg"
 # twitter-card: true
 site-url: "https://saforem2.github.io/enrich"
 google-scholar: true
-citeproc: true
+# citeproc: true
 project:
   render:
     - index.qmd

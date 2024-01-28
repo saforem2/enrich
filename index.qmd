@@ -1,6 +1,6 @@
 ---
 # sidebar: false
-title: "`enrich`"
+title: "`enrich` 💸"
 callout-appearance: simple
 title-block-banner: false
 lightbox: true
@@ -33,11 +33,18 @@ format:
     output-file: "index-revealjs.html"
 ---
 
-<details open><summary><b style="font-size:1.25em;"><code>rich</code> 🤝 <code>logging</code></b></summary>
+## `rich` 🤝 `logging`
 
 `enrich` provides a generalized
 [`RichHandler`](https://github.com/saforem2/enrich/blob/main/src/enrich/handler.py#L28) that allows
 for [`rich`](https://github.com/Textualize/rich) style highlights **without line breaks**
+
+
+::: {.callout-tip icon=false title='[💡 Tip]{style="color: var(--ansi-green);"}' collapse="false" style="text-align: left!important; width:100%; border: none!important; border-color: var(--dim-text)!important; background-color: var(--bg-transparent); opacity:100%; border-left: 2px solid var(--ansi-green)!important; border-radius: 0pt!important;"}
+
+This document is best viewed online at [`enrich`](https://saforem2.github.io/enrich)
+
+:::
 
 <!-- ::: {layout="[[35, -5, 35]]" layout-valign="bottom" style="display: flex; text-align:center; align-items: flex-end;"} -->
 
@@ -53,32 +60,118 @@ for [`rich`](https://github.com/Textualize/rich) style highlights **without line
 
 ::::
 
-<details><summary><b>🤷🏻‍♂️  Ambivalent<b></summary>
+## 🧩 Install
 
-![ambivalent](https://github.com/saforem2/enrich/blob/main/assets/logs/amvbivalent.png){.stretch}
+```bash
+python3 -m pip install "git+https://github.com/saforem2/enrich"
+```
 
-![ambivalent-transparent](https://github.com/saforem2/enrich/blob/main/assets/logs/ambivalent-transparent.png){.stretch}
+<details closed><summary><code>test_logger.py</code></summary>
+
+```python
+from enrich import get_logger
+log = get_logger(name='test', level='DEBUG')
+log.debug('debug')
+log.info('info')
+log.warning('warning')
+log.error('error')
+log.critical('critical')
+```
+
+<details closed><summary><code>Output</code>:</summary>
+
+::: {.cell-output .cell-output-display style="font-family:monospace!important;"}
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:monospace;">
+<span style="color:var(--ansi-black);">[</span><span style="color:var(--ansi-black-bright);">2024-01-28 </span><span style="color:var(--ansi-black-bright);">11:13:30</span><span style="color:var(--ansi-black);">]</span><span style="color:var(--ansi-black);">[</span><b><span style="color:var(--ansi-green);">DEBUG</span></b><span style="color:var(--ansi-black);">]</span><span style="color:var(--ansi-black);">[</span><i><span style="color:var(--ansi-cyan);">test_logger</span></i><span style="color:var(--ansi-green-bright)">:</span><span style="color:var(--ansi-black);">24</span><span style="color:var(--ansi-black);">]</span><b><span style="color:var(--ansi-yellow-bright);"> - </span></b>debug  
+<span style="color:var(--ansi-black);">[</span><span style="color:var(--ansi-black-bright);">2024-01-28 </span><span style="color:var(--ansi-black-bright);">11:13:30</span><span style="color:var(--ansi-black);">]</span><span style="color:var(--ansi-black);">[</span><b><span style="color:var(--ansi-blue);">INFO</span></b><span style="color:var(--ansi-black);">]</span><span style="color:var(--ansi-black);">[</span><i><span style="color:var(--ansi-cyan);">test_logger</span></i><span style="color:var(--ansi-green-bright)">:</span><span style="color:var(--ansi-black);">25</span><span style="color:var(--ansi-black);">]</span><b><span style="color:var(--ansi-yellow-bright);"> - </span></b>info  
+<span style="color:var(--ansi-black);">[</span><span style="color:var(--ansi-black-bright);">2024-01-28 </span><span style="color:var(--ansi-black-bright);">11:13:30</span><span style="color:var(--ansi-black);">]</span><span style="color:var(--ansi-black);">[</span><span style="color:var(--ansi-yellow);">WARNING</span><span style="color:var(--ansi-black);">]</span><span style="color:var(--ansi-black);">[</span><i><span style="color:var(--ansi-cyan);">test_logger</span></i><span style="color:var(--ansi-green-bright)">:</span><span style="color:var(--ansi-black);">26</span><span style="color:var(--ansi-black);">]</span><b><span style="color:var(--ansi-yellow-bright);"> - </span></b>warning  
+<span style="color:var(--ansi-black);">[</span><span style="color:var(--ansi-black-bright);">2024-01-28 </span><span style="color:var(--ansi-black-bright);">11:13:30</span><span style="color:var(--ansi-black);">]</span><span style="color:var(--ansi-black);">[</span><b><span style="color:var(--ansi-red);">ERROR</span></b><span style="color:var(--ansi-black);">]</span><span style="color:var(--ansi-black);">[</span><i><span style="color:var(--ansi-cyan);">test_logger</span></i><span style="color:var(--ansi-green-bright)">:</span><span style="color:var(--ansi-black);">27</span><span style="color:var(--ansi-black);">]</span><b><span style="color:var(--ansi-yellow-bright);"> - </span></b>error  
+<span style="color:var(--ansi-black);">[</span><span style="color:var(--ansi-black-bright)">2024-01-28 </span><span style="color:var(--ansi-black-bright)">11:13:30</span><span style="color:var(--ansi-black);">]</span><span style="color:var(--ansi-black);">[</span><b><span style="color:var(--black000); background-color: var(--ansi-red-bright);">CRITICAL</span></b><span style="color:var(--ansi-black);">]</span><span style="color:var(--ansi-black);">[</span><i><span style="color:var(--ansi-cyan);">test_logger</span></i><span style="color:var(--ansi-green-bright)">:</span><span style="color:var(--ansi-black);">28</span><span style="color:var(--ansi-black);">]</span><b><span style="color:var(--ansi-yellow-bright);"> - </span></b>critical
+</pre>
+:::
 
 </details>
 
-<details><summary><b>😻 Catpuccin Latte<b></summary>
+</details>
 
-![catpuccin-latte](https://github.com/saforem2/enrich/blob/main/assets/logs/catpuccin-latte.png){.stretch}
-![catpuccin-latte-transparent](https://github.com/saforem2/enrich/blob/main/assets/logs/catpuccin-latte-transparent.png){.stretch}
+##  📸 Screenshots
+
+<details><summary><b>🤷🏻‍♂️  Ambivalent</b></summary>
+
+![ambivalent](https://github.com/saforem2/enrich/blob/main/assets/logs/amvbivalent.png?raw=true){.stretch}
+
+![ambivalent-transparent](https://github.com/saforem2/enrich/blob/main/assets/logs/ambivalent-transparent.png?raw=true){.stretch}
 
 </details>
 
-<details><summary><b>😈 Doom One<b></summary>
+<details><summary><b>😻 Catpuccin Latte</b></summary>
 
-![doom-one](https://github.com/saforem2/enrich/blob/main/assets/logs/doom-one.png){.stretch}
-![doom-one-transparent](https://github.com/saforem2/enrich/blob/main/assets/logs/doom-one-transparent.png){.stretch}
-
-</details>
+![catpuccin-latte](https://github.com/saforem2/enrich/blob/main/assets/logs/catpuccin-latte.png?raw=true){.stretch}
+![catpuccin-latte-transparent](https://github.com/saforem2/enrich/blob/main/assets/logs/catpuccin-latte-transparent.png?raw=true){.stretch}
 
 </details>
 
+<details><summary><b>😈 Doom One</b></summary>
 
-## Setup
+![doom-one](https://github.com/saforem2/enrich/blob/main/assets/logs/doom-one.png?raw=true){.stretch}
+![doom-one-transparent](https://github.com/saforem2/enrich/blob/main/assets/logs/doom-one-transparent.png?raw=true){.stretch}
+
+</details>
+
+## 💅  Styles
+
+<details closed><summary>Dark Styles</summary>
+
+![dark-styles](./assets/styles-dark.png){#fig-dark-styles .stretch}
+
+</details>
+
+<details closed><summary>Light Styles</summary>
+
+![light-styles](./assets/styles-light.png){#fig-light-styles .stretch}
+
+</details>
+
+
+</details>
+
+
+<!-- <details closed><summary>Screenshot:</summary> -->
+<!---->
+<!-- ::: {#fig-test-logger} -->
+<!---->
+<!-- ![`test_logger.py`](./assets/test_logger.png){.stretch} -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- </details> -->
+
+## ⚙️  Setup
+
+
+```python
+from enrich import get_logger
+log = get_logger(name='enrich', level='DEBUG')
+```
+
+<details><summary><code>Output</code></summary>
+
+```python
+log.debug('debug')
+log.info('info')
+log.warning('warning')
+log.error('error')
+log.critical('critical')
+[2024-01-28 11:04:50][DEBUG][ipython:1] - debug
+[2024-01-28 11:04:50][INFO][ipython:2] - info
+[2024-01-28 11:04:50][WARNING][ipython:3] - warning
+[2024-01-28 11:04:50][ERROR][ipython:4] - error
+[2024-01-28 11:04:50][CRITICAL][ipython:5] - critical
+```
+
+</details>
+
+<details><summary>Alternative Setup</summary>
 
 - `logging.config.dictConfig(...)`:
 
@@ -109,13 +202,11 @@ for [`rich`](https://github.com/Textualize/rich) style highlights **without line
     ...
     ```
 
+</details>
 
+## 📚 Details
 
-<details closed><summary><h1> Original README</h1></summary>
-
-## Original `README`
-
-## Console with redirect support
+### ↪️  Redirect support
 
 Our Console class adds one additional option to rich.Console in order to
 redirect `sys.stdout` and `sys.stderr` streams using a FileProxy.
@@ -133,7 +224,7 @@ sys.write("foo")
 assert console.export_text() == "foo"
 ```
 
-## Console with implicit soft wrapping
+### 🌯 Soft wrapping
 
 If you want to produce fluid terminal output, one where the client terminal
 decides where to wrap the text instead of the application, you can now
@@ -146,15 +237,6 @@ import sys
 console = Console(soft_wrap=True)
 console.print(...)  # no longer need to pass soft_wrap to each print
 ```
-
-## Console.print can also deal with ANSI escapes
-
-Extends Rich Console to detect if original text already had ANSI escapes and
-decodes it before processing it. This solves the case where printing
-output captured from other processes that contained ANSI escapes would brake.
-[upstream-404](https://github.com/willmcgugan/rich/discussions/404)
-
-## Soft-wrapping logger
 
 Rich logger assumes that you always have a fixed width console and it does
 wrap logged output according to it. Our alternative logger does exactly the
@@ -177,11 +259,18 @@ log = logging.getLogger("rich")
 log.info("Text that we do not want pre-wrapped by logger: %s", 100 * "x")
 ```
 
+### 💾 ANSI Escapes
+
+Extends Rich Console to detect if original text already had ANSI escapes and
+decodes it before processing it. This solves the case where printing
+output captured from other processes that contained ANSI escapes would brake.
+[upstream-404](https://github.com/willmcgugan/rich/discussions/404)
+
 </details>
 
-## [{{< fa solid hourglass-end >}}]{.pink-text} Appendix
+---
 
-::: {.callout-tip icon=false title='[{{< iconify material-symbols ecg-heart >}} Status]{style="color: #FF5252;"}' collapse="false" style="text-align: left!important; width:100%; border-color: var(--dim-text)!important; background-color: var(--bg-transparent); opacity:100%;"}
+::: {.callout-tip icon=false title='[❤️‍🩹 Status]{style="color: var(--ansi-red);"}' collapse="false" style="text-align: left!important; width:100%; border: none!important; border-color: var(--dim-text)!important; background-color: var(--bg-transparent); opacity:100%; border-left: 2px solid var(--ansi-red)!important; border-radius: 0pt!important;"}
 ```{python}
 #| echo: false
 import datetime

@@ -1,0 +1,177 @@
+# Styles
+
+::: {.cell-output}
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃<b> </b><b>Name                         </b><b> </b>┃<b> </b><b>Styling                                                                                                           </b><b> </b>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ none                          │ none                                                                                                               │
+│ <span style="color:#FFF"><span style="background-color:#000">reset                        </span></span> │ not bold not dim not italic not underline not blink not blink2 not reverse not conceal not strike default on       │
+│                               │ default                                                                                                            │
+│ dim                           │ dim                                                                                                                │
+│ bright                        │ not dim                                                                                                            │
+│ <b>bold                         </b> │ bold                                                                                                               │
+│ <b>strong                       </b> │ bold                                                                                                               │
+│ <b>code                         </b> │ bold reverse                                                                                                       │
+│ <i>italic                       </i> │ italic                                                                                                             │
+│ <i>emphasize                    </i> │ italic                                                                                                             │
+│ <u>underline                    </u> │ underline                                                                                                          │
+│ <blink>blink                        </blink> │ blink                                                                                                              │
+│ <blink>blink2                       </blink> │ blink2                                                                                                             │
+│ reverse                       │ reverse                                                                                                            │
+│ <strike>strike                       </strike> │ strike                                                                                                             │
+<style>
+</style>
+│ <span style="color:var(--ansi0)">black                        </span> │ black                                                                                                              │
+│ <span style="color:var(--ansi1);">red                          </span> │ red                                                                                                                │
+│ <span style="color:var(--ansi2);">green                        </span> │ green                                                                                                              │
+│ <span style="color:var(--ansi3);">yellow                       </span> │ yellow                                                                                                             │
+│ <span style="color:var(--ansi4);">blue                        </span> │ blue                                                                                                            │
+│ <span style="color:var(--ansi5)">cyan                         </span> │ cyan                                                                                                               │
+│ <span style="color:var(--ansi6)">white                        </span> │ white                                                                                                              │
+│ <i><span style="color:var(--ansi3);">inspect.attr                 </span></i> │ italic yellow                                                                                                      │
+│ <i><span style="color:var(--ansi3);">inspect.attr.dunder          </span></i> │ dim italic yellow                                                                                                  │
+│ <b><span style="color:var(--ansi1);">inspect.callable             </span></b> │ bold red                                                                                                           │
+│ <i><span style="color:var(--ansi14)">inspect.async_def            </span></i> │ italic bright_cyan                                                                                                 │
+│ <i><span style="color:var(--ansi14)">inspect.def                  </span></i> │ italic bright_cyan                                                                                                 │
+│ <i><span style="color:var(--ansi14)">inspect.class                </span></i> │ italic bright_cyan                                                                                                 │
+│ <b><span style="color:var(--ansi1);">inspect.error                </span></b> │ bold red                                                                                                           │
+│ inspect.equals                │ none                                                                                                               │
+│ <span style="color:var(--ansi5)">inspect.help                 </span> │ cyan                                                                                                               │
+│ inspect.doc                   │ dim                                                                                                                │
+│ <span style="color:var(--ansi2);">inspect.value.border         </span> │ green                                                                                                              │
+│ <b><span style="color:var(--ansi1);">live.ellipsis                </span></b> │ bold red                                                                                                           │
+│ <span style="color:var(--ansi1);">layout.tree.row              </span> │ not dim red                                                                                                        │
+│ <span style="color:var(--ansi6)">layout.tree.column           </span> │ not dim blue                                                                                                       │
+│ <b><span style="color:var(--ansi11)">logging.keyword              </span></b> │ bold bright_yellow                                                                                                 │
+│ logging.level.notset          │ dim                                                                                                                │
+│ <b><span style="color:#55F">logging.level.debug          </span></b> │ bold bright_blue                                                                                                   │
+│ <b><span style="color:var(--ansi2);">logging.level.info           </span></b> │ bold green                                                                                                         │
+│ <span style="color:var(--ansi11)">logging.level.warning        </span> │ bright_yellow                                                                                                      │
+│ <b><span style="color:#F55">logging.level.error          </span></b> │ bold bright_red                                                                                                    │
+│ <b><span style="color:var(--ansi1);">logging.level.critical       </span></b> │ bold reverse red                                                                                                   │
+│ log.level                     │ none                                                                                                               │
+│ <span style="color:#555">log.time                     </span> │ bright_black                                                                                                       │
+│ log.message                   │ none                                                                                                               │
+│ <i><span style="color:var(--ansi5)">log.path                     </span></i> │ not bold italic cyan                                                                                               │
+│ <span style="color:var(--ansi11)">repr.ellipsis                </span> │ bright_yellow                                                                                                      │
+│ <span style="color:var(--ansi10)">repr.indent                  </span> │ dim bright_green                                                                                                   │
+│ <b><span style="color:var(--ansi10)">repr.error                   </span></b> │ bold bright_green                                                                                                  │
+│ <i><span style="color:var(--ansi3);">repr.str                     </span></i> │ not bold italic yellow                                                                                             │
+│ <b><span style="color:var(--ansi1);">repr.brace                   </span></b> │ bold not dim red                                                                                                   │
+│ <span style="color:var(--ansi11)">repr.comma                   </span> │ bright_yellow                                                                                                      │
+│ <b><span style="color:var(--ansi10)">repr.ipv4                    </span></b> │ bold bright_green                                                                                                  │
+│ <b><span style="color:var(--ansi10)">repr.ipv6                    </span></b> │ bold bright_green                                                                                                  │
+│ <b><span style="color:var(--ansi10)">repr.eui48                   </span></b> │ bold bright_green                                                                                                  │
+│ <b><span style="color:var(--ansi10)">repr.eui64                   </span></b> │ bold bright_green                                                                                                  │
+│ <b>repr.tag_start               </b> │ bold                                                                                                               │
+│ <b><span style="color:var(--ansi13)">repr.tag_name                </span></b> │ bold bright_magenta                                                                                                │
+│ <span style="color:#FFF">repr.tag_contents            </span> │ default                                                                                                            │
+│ <b>repr.tag_end                 </b> │ bold                                                                                                               │
+│ <i><span style="color:#55F">repr.attrib_name             </span></i> │ not bold italic bright_blue                                                                                        │
+│ <b><span style="color:var(--ansi3);">repr.attrib_equal            </span></b> │ bold yellow                                                                                                        │
+│ <span style="color:var(--ansi13)">repr.attrib_value            </span> │ not italic bright_magenta                                                                                          │
+│ <span style="color:var(--ansi4);">repr.number                  </span> │ not bold not italic magenta                                                                                        │
+│ <b><span style="color:var(--ansi14)">repr.number_complex          </span></b> │ bold not italic bright_cyan                                                                                        │
+│ <i><span style="color:var(--ansi10)">repr.bool_true               </span></i> │ italic bright_green                                                                                                │
+│ <i><span style="color:#F55">repr.bool_false              </span></i> │ italic bright_red                                                                                                  │
+│ <i><span style="color:var(--ansi13)">repr.none                    </span></i> │ italic bright_magenta                                                                                              │
+│ <u><span style="color:#55F">repr.url                     </span></u> │ not bold not italic underline bright_blue                                                                          │
+│ <span style="color:var(--ansi3);">repr.uuid                    </span> │ not bold yellow                                                                                                    │
+│ <b><span style="color:var(--ansi4);">repr.call                    </span></b> │ bold magenta                                                                                                       │
+│ <span style="color:var(--ansi2);">repr.path                    </span> │ green                                                                                                              │
+│ <span style="color:var(--ansi4);">repr.filename                </span> │ magenta                                                                                                            │
+│ <span style="color:var(--ansi10)">rule.line                    </span> │ bright_green                                                                                                       │
+│ rule.text                     │ none                                                                                                               │
+│ <b><span style="color:var(--ansi11)">json.brace                   </span></b> │ bold bright_yellow                                                                                                 │
+│ <i><span style="color:var(--ansi10)">json.bool_true               </span></i> │ italic bright_green                                                                                                │
+│ <i><span style="color:#F55">json.bool_false              </span></i> │ italic bright_red                                                                                                  │
+│ <i><span style="color:#F55">json.null                    </span></i> │ italic bright_red                                                                                                  │
+│ <b><span style="color:var(--ansi5)">json.number                  </span></b> │ bold not italic cyan                                                                                               │
+│ <span style="color:var(--ansi10)">json.str                     </span> │ not bold not italic bright_green                                                                                   │
+│ <b><span style="color:#55F">json.key                     </span></b> │ bold bright_blue                                                                                                   │
+│ prompt                        │ none                                                                                                               │
+│ <b><span style="color:var(--ansi4);">prompt.choices               </span></b> │ bold magenta                                                                                                       │
+│ <b><span style="color:var(--ansi5)">prompt.default               </span></b> │ bold cyan                                                                                                          │
+│ <span style="color:var(--ansi1);">prompt.invalid               </span> │ red                                                                                                                │
+│ <span style="color:var(--ansi1);">prompt.invalid.choice        </span> │ red                                                                                                                │
+│ pretty                        │ none                                                                                                               │
+│ <span style="color:var(--ansi6)">scope.border                 </span> │ blue                                                                                                               │
+│ <i><span style="color:var(--ansi3);">scope.key                    </span></i> │ italic yellow                                                                                                      │
+│ <i><span style="color:var(--ansi3);">scope.key.special            </span></i> │ dim italic yellow                                                                                                  │
+│ <span style="color:var(--ansi1);">scope.equals                 </span> │ red                                                                                                                │
+│ <b>table.header                 </b> │ bold                                                                                                               │
+│ <b>table.footer                 </b> │ bold                                                                                                               │
+│ table.cell                    │ none                                                                                                               │
+│ <i>table.title                  </i> │ italic                                                                                                             │
+│ <i>table.caption                </i> │ dim italic                                                                                                         │
+│ <i><span style="color:var(--ansi1);">traceback.error              </span></i> │ italic red                                                                                                         │
+│ <span style="color:#F55">traceback.border.syntax_error</span> │ bright_red                                                                                                         │
+│ <span style="color:var(--ansi1);">traceback.border             </span> │ red                                                                                                                │
+│ traceback.text                │ none                                                                                                               │
+│ <b><span style="color:var(--ansi1);">traceback.title              </span></b> │ bold red                                                                                                           │
+│ <b><span style="color:#F55">traceback.exc_type           </span></b> │ bold bright_red                                                                                                    │
+│ traceback.exc_value           │ none                                                                                                               │
+│ <b><span style="color:#F55">traceback.offset             </span></b> │ bold bright_red                                                                                                    │
+│ <span style="color:#3a3a3a">bar.back                     </span> │ grey23                                                                                                             │
+│ <span style="color:#f92672">bar.complete                 </span> │ rgb(249,38,114)                                                                                                    │
+│ <span style="color:#729c1f">bar.finished                 </span> │ rgb(114,156,31)                                                                                                    │
+│ <span style="color:#f92672">bar.pulse                    </span> │ rgb(249,38,114)                                                                                                    │
+│ progress.description          │ none                                                                                                               │
+│ <span style="color:var(--ansi2);">progress.filesize            </span> │ green                                                                                                              │
+│ <span style="color:var(--ansi2);">progress.filesize.total      </span> │ green                                                                                                              │
+│ <span style="color:var(--ansi2);">progress.download            </span> │ green                                                                                                              │
+│ <span style="color:var(--ansi3);">progress.elapsed             </span> │ yellow                                                                                                             │
+│ <span style="color:var(--ansi4);">progress.percentage          </span> │ magenta                                                                                                            │
+│ <span style="color:var(--ansi5)">progress.remaining           </span> │ cyan                                                                                                               │
+│ <span style="color:var(--ansi1);">progress.data.speed          </span> │ red                                                                                                                │
+│ <span style="color:var(--ansi2);">progress.spinner             </span> │ green                                                                                                              │
+│ <span style="color:var(--ansi2);">status.spinner               </span> │ green                                                                                                              │
+│ tree                          │ none                                                                                                               │
+│ tree.line                     │ none                                                                                                               │
+│ markdown.paragraph            │ none                                                                                                               │
+│ markdown.text                 │ none                                                                                                               │
+│ <i>markdown.em                  </i> │ italic                                                                                                             │
+│ <i>markdown.emph                </i> │ italic                                                                                                             │
+│ <b>markdown.strong              </b> │ bold                                                                                                               │
+│ <b><span style="color:var(--ansi5)"><span style="background-color:#000">markdown.code                </span></span></b> │ bold cyan on black                                                                                                 │
+│ <span style="color:var(--ansi5)"><span style="background-color:#000">markdown.code_block          </span></span> │ cyan on black                                                                                                      │
+│ <span style="color:var(--ansi4);">markdown.block_quote         </span> │ magenta                                                                                                            │
+│ <span style="color:var(--ansi5)">markdown.list                </span> │ cyan                                                                                                               │
+│ markdown.item                 │ none                                                                                                               │
+│ <b><span style="color:var(--ansi3);">markdown.item.bullet         </span></b> │ bold yellow                                                                                                        │
+│ <b><span style="color:var(--ansi3);">markdown.item.number         </span></b> │ bold yellow                                                                                                        │
+│ <span style="color:var(--ansi3);">markdown.hr                  </span> │ yellow                                                                                                             │
+│ markdown.h1.border            │ none                                                                                                               │
+│ <b>markdown.h1                  </b> │ bold                                                                                                               │
+│ <b><u>markdown.h2                  </u></b> │ bold underline                                                                                                     │
+│ <b>markdown.h3                  </b> │ bold                                                                                                               │
+│ <b>markdown.h4                  </b> │ bold dim                                                                                                           │
+│ <u>markdown.h5                  </u> │ underline                                                                                                          │
+│ <i>markdown.h6                  </i> │ italic                                                                                                             │
+│ <i>markdown.h7                  </i> │ dim italic                                                                                                         │
+│ <span style="color:#55F">markdown.link                </span> │ bright_blue                                                                                                        │
+│ <u><span style="color:var(--ansi6)">markdown.link_url            </span></u> │ underline blue                                                                                                     │
+│ <strike>markdown.s                   </strike> │ strike                                                                                                             │
+│ <span style="color:var(--ansi6)">iso8601.date                 </span> │ blue                                                                                                               │
+│ <span style="color:var(--ansi4);">iso8601.time                 </span> │ magenta                                                                                                            │
+│ <span style="color:var(--ansi3);">iso8601.timezone             </span> │ yellow                                                                                                             │
+│ <u><span style="display:none"><span style="color:var(--ansi6)">url                          </span></span></u> │ underline conceal blue                                                                                             │
+│ <span style="color:var(--ansi6)">num                          </span> │ blue                                                                                                               │
+│ <span style="color:#000">log.brace                    </span> │ not dim black                                                                                                      │
+│ <b><span style="color:var(--ansi2);">repr.colon                   </span></b> │ bold green                                                                                                         │
+│ <b><span style="color:var(--ansi11)">repr.dash                    </span></b> │ bold bright_yellow                                                                                                 │
+│ <span style="color:var(--ansi11)">log.level.warn               </span> │ bright_yellow                                                                                                      │
+│ <b><span style="color:var(--ansi11)">log.level.warning            </span></b> │ bold bright_yellow                                                                                                 │
+│ <span style="color:var(--ansi11)">logging.level.warn           </span> │ bright_yellow                                                                                                      │
+│ <span style="color:var(--ansi10)">log.colon                    </span> │ bright_green                                                                                                       │
+│ <span style="color:#000">log.linenumber               </span> │ not bold black                                                                                                     │
+│ <span style="color:#555">logging.time                 </span> │ bright_black                                                                                                       │
+│ <span style="color:#555">logging.date                 </span> │ bright_black                                                                                                       │
+│ <span style="color:#555">hidden                       </span> │ dim bright_black                                                                                                   │
+│ <span style="color:var(--ansi6)">repr.attr                    </span> │ blue                                                                                                               │
+│ <i><span style="color:var(--ansi13)">repr.null                    </span></i> │ italic bright_magenta                                                                                              │
+└───────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+:::

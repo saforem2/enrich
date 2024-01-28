@@ -2,106 +2,92 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "enrich",
+    "title": "enrich 💸",
     "section": "",
-    "text": "rich 🤝 logging\n\nenrich provides a generalized RichHandler that allows for rich style highlights without line breaks\n\n\n\n\n\n\n\n\n\nFigure 1: dark\n\n\n\n\n\n\n\n\n\n\nFigure 2: light\n\n\n\n\n\n\n\n🤷🏻‍♂️ Ambivalent\n\n\n\n\nambivalent\n\n\n\n\n\nambivalent-transparent\n\n\n\n\n\n😻 Catpuccin Latte\n\n \n\n\n\n😈 Doom One"
+    "text": "enrich provides a generalized RichHandler that allows for rich style highlights without line breaks\n\n\n\n\n\n\n💡 Tip\n\n\n\n\n\nThis document is best viewed online at enrich\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: dark\n\n\n\n\n\n\n\n\n\n\nFigure 2: light"
+  },
+  {
+    "objectID": "index.html#rich-logging",
+    "href": "index.html#rich-logging",
+    "title": "enrich 💸",
+    "section": "",
+    "text": "enrich provides a generalized RichHandler that allows for rich style highlights without line breaks\n\n\n\n\n\n\n💡 Tip\n\n\n\n\n\nThis document is best viewed online at enrich\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: dark\n\n\n\n\n\n\n\n\n\n\nFigure 2: light"
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "enrich 💸",
+    "section": "🧩 Install",
+    "text": "🧩 Install\npython3 -m pip install \"git+https://github.com/saforem2/enrich\"\n\n\ntest_logger.py\n\nfrom enrich import get_logger\nlog = get_logger(name='test', level='DEBUG')\nlog.debug('debug')\nlog.info('info')\nlog.warning('warning')\nlog.error('error')\nlog.critical('critical')\n\n\nOutput:\n\n\n[2024-01-28 11:13:30][DEBUG][test_logger:24] - debug  \n[2024-01-28 11:13:30][INFO][test_logger:25] - info  \n[2024-01-28 11:13:30][WARNING][test_logger:26] - warning  \n[2024-01-28 11:13:30][ERROR][test_logger:27] - error  \n[2024-01-28 11:13:30][CRITICAL][test_logger:28] - critical"
+  },
+  {
+    "objectID": "index.html#screenshots",
+    "href": "index.html#screenshots",
+    "title": "enrich 💸",
+    "section": "📸 Screenshots",
+    "text": "📸 Screenshots\n\n\n🤷🏻‍♂️ Ambivalent\n\n\n\n\nambivalent\n\n\n\n\n\nambivalent-transparent\n\n\n\n\n\n😻 Catpuccin Latte\n\n \n\n\n\n😈 Doom One"
+  },
+  {
+    "objectID": "index.html#styles",
+    "href": "index.html#styles",
+    "title": "enrich 💸",
+    "section": "💅 Styles",
+    "text": "💅 Styles\n\n\nDark Styles\n\n\n\n\n\n\n\nFigure 3: dark-styles\n\n\n\n\n\n\nLight Styles\n\n\n\n\n\n\n\nFigure 4: light-styles"
   },
   {
     "objectID": "index.html#setup",
     "href": "index.html#setup",
-    "title": "enrich",
-    "section": "Setup",
-    "text": "Setup\n\nlogging.config.dictConfig(...):\nimport yaml\nwith Path('logconf.yaml').open('r') as stream:\n    config = yaml.load(stream, Loader=yaml.FullLoader)\nlog_config = logging.config.dictConfig(config)\nlog = logging.getLogger(__name__)\nlog.setLevel('INFO')\nWhere logconf.yaml:\n---\n# logconf.yaml\nhandlers:\n  term:\n    class: enrich.handler.RichHandler\n    show_time: true\n    show_level: true\n    enable_link_path: false\n    level: DEBUG\nroot:\n  handlers: [term]\ndisable_existing_loggers: false\n...\n\n\n\n\nOriginal README"
+    "title": "enrich 💸",
+    "section": "⚙️ Setup",
+    "text": "⚙️ Setup\nfrom enrich import get_logger\nlog = get_logger(name='enrich', level='DEBUG')\n\n\nOutput\n\nlog.debug('debug')\nlog.info('info')\nlog.warning('warning')\nlog.error('error')\nlog.critical('critical')\n[2024-01-28 11:04:50][DEBUG][ipython:1] - debug\n[2024-01-28 11:04:50][INFO][ipython:2] - info\n[2024-01-28 11:04:50][WARNING][ipython:3] - warning\n[2024-01-28 11:04:50][ERROR][ipython:4] - error\n[2024-01-28 11:04:50][CRITICAL][ipython:5] - critical\n\n\n\nAlternative Setup\n\n\nlogging.config.dictConfig(...):\nimport yaml\nwith Path('logconf.yaml').open('r') as stream:\n    config = yaml.load(stream, Loader=yaml.FullLoader)\nlog_config = logging.config.dictConfig(config)\nlog = logging.getLogger(__name__)\nlog.setLevel('INFO')\nWhere logconf.yaml:\n---\n# logconf.yaml\nhandlers:\n  term:\n    class: enrich.handler.RichHandler\n    show_time: true\n    show_level: true\n    enable_link_path: false\n    level: DEBUG\nroot:\n  handlers: [term]\ndisable_existing_loggers: false\n..."
   },
   {
-    "objectID": "index.html#original-readme",
-    "href": "index.html#original-readme",
-    "title": "enrich",
-    "section": "Original README",
-    "text": "Original README"
+    "objectID": "index.html#details",
+    "href": "index.html#details",
+    "title": "enrich 💸",
+    "section": "📚 Details",
+    "text": "📚 Details\n\n↪️ Redirect support\nOur Console class adds one additional option to rich.Console in order to redirect sys.stdout and sys.stderr streams using a FileProxy.\nfrom enrich.console import Console\nimport sys\n\nconsole = Console(\n    redirect=True,  # &lt;-- not supported by rich.console.Console\n    record=True)\nsys.write(\"foo\")\n\n# this assert would have passed without redirect=True\nassert console.export_text() == \"foo\"\n\n\n🌯 Soft wrapping\nIf you want to produce fluid terminal output, one where the client terminal decides where to wrap the text instead of the application, you can now tell the Console constructor the soft_wrap preference.\nfrom enrich.console import Console\nimport sys\n\nconsole = Console(soft_wrap=True)\nconsole.print(...)  # no longer need to pass soft_wrap to each print\nRich logger assumes that you always have a fixed width console and it does wrap logged output according to it. Our alternative logger does exactly the opposite: it ignores the columns of the current console and prints output using a Console with soft wrapping enabled.\nThe result are logged lines that can be displayed on any terminal or web page as they will allow the client to decide when to perform the wrapping.\nimport logging\nfrom enrich.logging import RichHandler\n\nFORMAT = \"%(message)s\"\nlogging.basicConfig(\n    level=\"NOTSET\", format=FORMAT, datefmt=\"[%X]\", handlers=[RichHandler()]\n)\n\nlog = logging.getLogger(\"rich\")\nlog.info(\"Text that we do not want pre-wrapped by logger: %s\", 100 * \"x\")\n\n\n💾 ANSI Escapes\nExtends Rich Console to detect if original text already had ANSI escapes and decodes it before processing it. This solves the case where printing output captured from other processes that contained ANSI escapes would brake. upstream-404\n\n\n\n\n\n\n\n\n❤️‍🩹 Status\n\n\n\n\n\n\n\nLast Updated: 01/28/2024 @ 12:20:05\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: dark\nFigure 2: light\nambivalent\nambivalent-transparent\nFigure 3: dark-styles\nFigure 4: light-styles"
   },
   {
-    "objectID": "index.html#console-with-redirect-support",
-    "href": "index.html#console-with-redirect-support",
-    "title": "enrich",
-    "section": "Console with redirect support",
-    "text": "Console with redirect support\nOur Console class adds one additional option to rich.Console in order to redirect sys.stdout and sys.stderr streams using a FileProxy.\nfrom enrich.console import Console\nimport sys\n\nconsole = Console(\n    redirect=True,  # &lt;-- not supported by rich.console.Console\n    record=True)\nsys.write(\"foo\")\n\n# this assert would have passed without redirect=True\nassert console.export_text() == \"foo\""
+    "objectID": "index-revealjs.html#rich-logging",
+    "href": "index-revealjs.html#rich-logging",
+    "title": "enrich 💸",
+    "section": "rich 🤝 logging",
+    "text": "rich 🤝 logging\nenrich provides a generalized RichHandler that allows for rich style highlights without line breaks\n\n\n\n\n💡 Tip\n\n\nThis document is best viewed online at enrich\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: dark\n\n\n\n\n\n\n\n\n\n\nFigure 2: light"
   },
   {
-    "objectID": "index.html#console-with-implicit-soft-wrapping",
-    "href": "index.html#console-with-implicit-soft-wrapping",
-    "title": "enrich",
-    "section": "Console with implicit soft wrapping",
-    "text": "Console with implicit soft wrapping\nIf you want to produce fluid terminal output, one where the client terminal decides where to wrap the text instead of the application, you can now tell the Console constructor the soft_wrap preference.\nfrom enrich.console import Console\nimport sys\n\nconsole = Console(soft_wrap=True)\nconsole.print(...)  # no longer need to pass soft_wrap to each print"
+    "objectID": "index-revealjs.html#install",
+    "href": "index-revealjs.html#install",
+    "title": "enrich 💸",
+    "section": "🧩 Install",
+    "text": "🧩 Install\npython3 -m pip install \"git+https://github.com/saforem2/enrich\"\n\n\ntest_logger.py\n\nfrom enrich import get_logger\nlog = get_logger(name='test', level='DEBUG')\nlog.debug('debug')\nlog.info('info')\nlog.warning('warning')\nlog.error('error')\nlog.critical('critical')\n\n\nOutput:\n\n\n[2024-01-28 11:13:30][DEBUG][test_logger:24] - debug  \n[2024-01-28 11:13:30][INFO][test_logger:25] - info  \n[2024-01-28 11:13:30][WARNING][test_logger:26] - warning  \n[2024-01-28 11:13:30][ERROR][test_logger:27] - error  \n[2024-01-28 11:13:30][CRITICAL][test_logger:28] - critical"
   },
   {
-    "objectID": "index.html#console.print-can-also-deal-with-ansi-escapes",
-    "href": "index.html#console.print-can-also-deal-with-ansi-escapes",
-    "title": "enrich",
-    "section": "Console.print can also deal with ANSI escapes",
-    "text": "Console.print can also deal with ANSI escapes\nExtends Rich Console to detect if original text already had ANSI escapes and decodes it before processing it. This solves the case where printing output captured from other processes that contained ANSI escapes would brake. upstream-404"
+    "objectID": "index-revealjs.html#screenshots",
+    "href": "index-revealjs.html#screenshots",
+    "title": "enrich 💸",
+    "section": "📸 Screenshots",
+    "text": "📸 Screenshots\n\n\n🤷🏻‍♂️ Ambivalent\n\n\n\n\nambivalent\n\n\n\n\n\nambivalent-transparent\n\n\n\n\n\n😻 Catpuccin Latte\n\n \n\n\n\n😈 Doom One"
   },
   {
-    "objectID": "index.html#soft-wrapping-logger",
-    "href": "index.html#soft-wrapping-logger",
-    "title": "enrich",
-    "section": "Soft-wrapping logger",
-    "text": "Soft-wrapping logger\nRich logger assumes that you always have a fixed width console and it does wrap logged output according to it. Our alternative logger does exactly the opposite: it ignores the columns of the current console and prints output using a Console with soft wrapping enabled.\nThe result are logged lines that can be displayed on any terminal or web page as they will allow the client to decide when to perform the wrapping.\nimport logging\nfrom enrich.logging import RichHandler\n\nFORMAT = \"%(message)s\"\nlogging.basicConfig(\n    level=\"NOTSET\", format=FORMAT, datefmt=\"[%X]\", handlers=[RichHandler()]\n)\n\nlog = logging.getLogger(\"rich\")\nlog.info(\"Text that we do not want pre-wrapped by logger: %s\", 100 * \"x\")"
-  },
-  {
-    "objectID": "index.html#appendix",
-    "href": "index.html#appendix",
-    "title": "enrich",
-    "section": " Appendix",
-    "text": "Appendix\n\n\n\n\n\n\n   Status\n\n\n\n\n\n\n\nLast Updated: 01/27/2024 @ 10:19:07\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: dark\nFigure 2: light\nambivalent\nambivalent-transparent"
+    "objectID": "index-revealjs.html#styles",
+    "href": "index-revealjs.html#styles",
+    "title": "enrich 💸",
+    "section": "💅 Styles",
+    "text": "💅 Styles\n\n\nDark Styles\n\n\n\n\n\n\n\nFigure 3: dark-styles\n\n\n\n\n\n\nLight Styles\n\n\n\n\n\n\n\nFigure 4: light-styles"
   },
   {
     "objectID": "index-revealjs.html#setup",
     "href": "index-revealjs.html#setup",
-    "title": "enrich",
-    "section": "Setup",
-    "text": "Setup\n\nlogging.config.dictConfig(...):\nimport yaml\nwith Path('logconf.yaml').open('r') as stream:\n    config = yaml.load(stream, Loader=yaml.FullLoader)\nlog_config = logging.config.dictConfig(config)\nlog = logging.getLogger(__name__)\nlog.setLevel('INFO')\nWhere logconf.yaml:\n---\n# logconf.yaml\nhandlers:\n  term:\n    class: enrich.handler.RichHandler\n    show_time: true\n    show_level: true\n    enable_link_path: false\n    level: DEBUG\nroot:\n  handlers: [term]\ndisable_existing_loggers: false\n...\n\n\n\n\nOriginal README"
+    "title": "enrich 💸",
+    "section": "⚙️ Setup",
+    "text": "⚙️ Setup\nfrom enrich import get_logger\nlog = get_logger(name='enrich', level='DEBUG')\n\n\nOutput\n\nlog.debug('debug')\nlog.info('info')\nlog.warning('warning')\nlog.error('error')\nlog.critical('critical')\n[2024-01-28 11:04:50][DEBUG][ipython:1] - debug\n[2024-01-28 11:04:50][INFO][ipython:2] - info\n[2024-01-28 11:04:50][WARNING][ipython:3] - warning\n[2024-01-28 11:04:50][ERROR][ipython:4] - error\n[2024-01-28 11:04:50][CRITICAL][ipython:5] - critical\n\n\n\nAlternative Setup\n\n\nlogging.config.dictConfig(...):\nimport yaml\nwith Path('logconf.yaml').open('r') as stream:\n    config = yaml.load(stream, Loader=yaml.FullLoader)\nlog_config = logging.config.dictConfig(config)\nlog = logging.getLogger(__name__)\nlog.setLevel('INFO')\nWhere logconf.yaml:\n---\n# logconf.yaml\nhandlers:\n  term:\n    class: enrich.handler.RichHandler\n    show_time: true\n    show_level: true\n    enable_link_path: false\n    level: DEBUG\nroot:\n  handlers: [term]\ndisable_existing_loggers: false\n..."
   },
   {
-    "objectID": "index-revealjs.html#original-readme",
-    "href": "index-revealjs.html#original-readme",
-    "title": "enrich",
-    "section": "Original README",
-    "text": "Original README"
-  },
-  {
-    "objectID": "index-revealjs.html#console-with-redirect-support",
-    "href": "index-revealjs.html#console-with-redirect-support",
-    "title": "enrich",
-    "section": "Console with redirect support",
-    "text": "Console with redirect support\nOur Console class adds one additional option to rich.Console in order to redirect sys.stdout and sys.stderr streams using a FileProxy.\nfrom enrich.console import Console\nimport sys\n\nconsole = Console(\n    redirect=True,  # &lt;-- not supported by rich.console.Console\n    record=True)\nsys.write(\"foo\")\n\n# this assert would have passed without redirect=True\nassert console.export_text() == \"foo\""
-  },
-  {
-    "objectID": "index-revealjs.html#console-with-implicit-soft-wrapping",
-    "href": "index-revealjs.html#console-with-implicit-soft-wrapping",
-    "title": "enrich",
-    "section": "Console with implicit soft wrapping",
-    "text": "Console with implicit soft wrapping\nIf you want to produce fluid terminal output, one where the client terminal decides where to wrap the text instead of the application, you can now tell the Console constructor the soft_wrap preference.\nfrom enrich.console import Console\nimport sys\n\nconsole = Console(soft_wrap=True)\nconsole.print(...)  # no longer need to pass soft_wrap to each print"
-  },
-  {
-    "objectID": "index-revealjs.html#console.print-can-also-deal-with-ansi-escapes",
-    "href": "index-revealjs.html#console.print-can-also-deal-with-ansi-escapes",
-    "title": "enrich",
-    "section": "Console.print can also deal with ANSI escapes",
-    "text": "Console.print can also deal with ANSI escapes\nExtends Rich Console to detect if original text already had ANSI escapes and decodes it before processing it. This solves the case where printing output captured from other processes that contained ANSI escapes would brake. upstream-404"
-  },
-  {
-    "objectID": "index-revealjs.html#soft-wrapping-logger",
-    "href": "index-revealjs.html#soft-wrapping-logger",
-    "title": "enrich",
-    "section": "Soft-wrapping logger",
-    "text": "Soft-wrapping logger\nRich logger assumes that you always have a fixed width console and it does wrap logged output according to it. Our alternative logger does exactly the opposite: it ignores the columns of the current console and prints output using a Console with soft wrapping enabled.\nThe result are logged lines that can be displayed on any terminal or web page as they will allow the client to decide when to perform the wrapping.\nimport logging\nfrom enrich.logging import RichHandler\n\nFORMAT = \"%(message)s\"\nlogging.basicConfig(\n    level=\"NOTSET\", format=FORMAT, datefmt=\"[%X]\", handlers=[RichHandler()]\n)\n\nlog = logging.getLogger(\"rich\")\nlog.info(\"Text that we do not want pre-wrapped by logger: %s\", 100 * \"x\")"
-  },
-  {
-    "objectID": "index-revealjs.html#appendix",
-    "href": "index-revealjs.html#appendix",
-    "title": "enrich",
-    "section": " Appendix",
-    "text": "Appendix\n\n\n\n\n   Status\n\n\n\n\nLast Updated: 01/27/2024 @ 10:19:07\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: dark\nFigure 2: light\nambivalent\nambivalent-transparent"
+    "objectID": "index-revealjs.html#details",
+    "href": "index-revealjs.html#details",
+    "title": "enrich 💸",
+    "section": "📚 Details",
+    "text": "📚 Details\n↪️ Redirect support\nOur Console class adds one additional option to rich.Console in order to redirect sys.stdout and sys.stderr streams using a FileProxy.\nfrom enrich.console import Console\nimport sys\n\nconsole = Console(\n    redirect=True,  # &lt;-- not supported by rich.console.Console\n    record=True)\nsys.write(\"foo\")\n\n# this assert would have passed without redirect=True\nassert console.export_text() == \"foo\"\n🌯 Soft wrapping\nIf you want to produce fluid terminal output, one where the client terminal decides where to wrap the text instead of the application, you can now tell the Console constructor the soft_wrap preference.\nfrom enrich.console import Console\nimport sys\n\nconsole = Console(soft_wrap=True)\nconsole.print(...)  # no longer need to pass soft_wrap to each print\nRich logger assumes that you always have a fixed width console and it does wrap logged output according to it. Our alternative logger does exactly the opposite: it ignores the columns of the current console and prints output using a Console with soft wrapping enabled.\nThe result are logged lines that can be displayed on any terminal or web page as they will allow the client to decide when to perform the wrapping.\nimport logging\nfrom enrich.logging import RichHandler\n\nFORMAT = \"%(message)s\"\nlogging.basicConfig(\n    level=\"NOTSET\", format=FORMAT, datefmt=\"[%X]\", handlers=[RichHandler()]\n)\n\nlog = logging.getLogger(\"rich\")\nlog.info(\"Text that we do not want pre-wrapped by logger: %s\", 100 * \"x\")\n💾 ANSI Escapes\nExtends Rich Console to detect if original text already had ANSI escapes and decodes it before processing it. This solves the case where printing output captured from other processes that contained ANSI escapes would brake. upstream-404"
   }
 ]
