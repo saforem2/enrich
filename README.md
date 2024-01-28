@@ -1,12 +1,8 @@
 # `enrich`
-Sam Foreman
+Sam Foreman  
 2024-01-27
 
-<details open>
-<summary>
-<b style="font-size:1.25em;"><code>rich</code> 🤝
-<code>logging</code></b>
-</summary>
+<details open><summary><h2><code>rich</code> 🤝 <code>logging</code></h2></summary>
 
 `enrich` provides a generalized
 [`RichHandler`](https://github.com/saforem2/enrich/blob/main/src/enrich/handler.py#L28)
@@ -197,5 +193,5 @@ log.info("Text that we do not want pre-wrapped by logger: %s", 100 * "x")
 > </pre>
 > <!-- [[![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsaforem2.github.io&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)]{style="text-align:center;"} -->
 > <p align="center">
-> <a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+> <a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsaforem2.github.io%2Fenrich&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
 > </p>
