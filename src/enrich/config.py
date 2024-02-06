@@ -102,7 +102,7 @@ STYLES: Dict[str, Style] = {
     'url': Style(conceal=True, underline=True, color="blue"),
     'num': Style(color="blue"),
     # 'repr.brace': Style(bold=True, color="magenta"),
-    'repr.brace': Style(color="bright_magenta", dim=False, bold=True),
+    'repr.brace': Style(color="bright_white", dim=False, bold=True),
     'log.brace': Style(color="black", dim=False),
     'repr.comma': Style(color="bright_yellow"),
     'repr.colon': Style(color="green", bold=True),
@@ -144,7 +144,7 @@ STYLES: Dict[str, Style] = {
     "repr.tag_name": Style(color="bright_magenta", bold=True),
     # "repr.tag_contents": Style(color="default"),
     # 'repr.number': Style(color="magenta", bold=False, italic=False),
-    'repr.number': Style(color="bright_cyan", bold=False, italic=False),
+    'repr.number': Style(color="bright_magenta", bold=False, italic=False),
     "repr.number_complex": Style(color="bright_magenta", bold=True, italic=False),  # same
     "repr.bool_true": Style(color="bright_green", italic=True),
     "repr.bool_false": Style(color="bright_red", italic=True),
