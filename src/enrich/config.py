@@ -4,6 +4,7 @@ enrich/__init__.py
 from __future__ import absolute_import, annotations, division, print_function
 import shutil
 import os
+from pathlib import Path
 from rich.style import Style
 from typing import Dict
 from rich.default_styles import DEFAULT_STYLES
@@ -13,6 +14,26 @@ size = shutil.get_terminal_size()
 WIDTH = size.columns
 HEIGHT = size.lines
 os.environ['COLUMNS'] = f'{WIDTH}'
+
+# -- Configure useful Paths -----------------------
+# warnings.filterwarnings('ignore')
+HERE = Path(os.path.abspath(__file__)).parent
+PROJECT_DIR = HERE.parent.parent
+PROJECT_ROOT = PROJECT_DIR
+CONF_DIR = HERE.joinpath('conf')
+# BIN_DIR = HERE.joinpath('bin')
+# SAVEJOBENV = BIN_DIR.joinpath('savejobenv')
+# GETJOBENV = BIN_DIR.joinpath('getjobenv')
+# DS_CONFIG_PATH = CONF_DIR.joinpath('ds_config.yaml')
+# LOGS_DIR = PROJECT_DIR.joinpath('logs')
+# OUTPUTS_DIR = HERE.joinpath('outputs')
+# QUARTO_OUTPUTS_DIR = PROJECT_DIR.joinpath('qmd', 'outputs')
+
+CONF_DIR.mkdir(exist_ok=True, parents=True)
+# LOGS_DIR.mkdir(exist_ok=True, parents=True)
+# QUARTO_OUTPUTS_DIR.mkdir(exist_ok=True, parents=True)
+# OUTPUTS_DIR.mkdir(exist_ok=True, parents=True)
+# OUTDIRS_FILE = OUTPUTS_DIR.joinpath('outdirs.log')
 
 DARK = {
     "red": "#FF5252",
@@ -81,11 +102,11 @@ STYLES: Dict[str, Style] = {
     'url': Style(conceal=True, underline=True, color="blue"),
     'num': Style(color="blue"),
     # 'repr.brace': Style(bold=True, color="magenta"),
-    'repr.brace': Style(color="red", dim=False, bold=True),
+    'repr.brace': Style(color="bright_magenta", dim=False, bold=True),
     'log.brace': Style(color="black", dim=False),
     'repr.comma': Style(color="bright_yellow"),
     'repr.colon': Style(color="green", bold=True),
-    'repr.dash': Style(color='bright_yellow', bold=True),
+    'repr.dash': Style(color='#838383', bold=True),
     # 'repr.number': Style(color="#69DB7C"),
     # 'num': Style(color="#69DB7C"),
     # 'repr.number': Style(color="#69DB7C"),
@@ -113,7 +134,7 @@ STYLES: Dict[str, Style] = {
     "repr.ellipsis": Style(color="bright_yellow"),
     "repr.indent": Style(color="bright_green", dim=True),
     "repr.error": Style(color="bright_green", bold=True),
-    "repr.str": Style(color="yellow", italic=True, bold=False),
+    "repr.str": Style(color="bright_green", italic=True, bold=False),
     "repr.ipv4": Style(bold=True, color="bright_green"),
     "repr.ipv6": Style(bold=True, color="bright_green"),
     "repr.eui48": Style(bold=True, color="bright_green"),
@@ -123,8 +144,8 @@ STYLES: Dict[str, Style] = {
     "repr.tag_name": Style(color="bright_magenta", bold=True),
     # "repr.tag_contents": Style(color="default"),
     # 'repr.number': Style(color="magenta", bold=False, italic=False),
-    'repr.number': Style(color="magenta", bold=False, italic=False),
-    "repr.number_complex": Style(color="bright_cyan", bold=True, italic=False),  # same
+    'repr.number': Style(color="bright_cyan", bold=False, italic=False),
+    "repr.number_complex": Style(color="bright_magenta", bold=True, italic=False),  # same
     "repr.bool_true": Style(color="bright_green", italic=True),
     "repr.bool_false": Style(color="bright_red", italic=True),
     "repr.none": Style(color="bright_magenta", italic=True),
